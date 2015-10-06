@@ -1,0 +1,12 @@
+﻿#code{float:left;color:#333;font-family:"Consolas","sans-serif","Courier New","Bitstream Vera Sans Mono","Monaco";font-size:12px}
+#code .string{color:#2a36ff}
+#code .keyword{color:#FF00FF ;font-weight:bolder}
+#code .placeholder{margin-left:15px}#code .space{margin-left:7px}
+
+#content-about{height: 520px;}
+/*单星注解*/
+#code .comments{color:#3f7f5f}
+/*系统关键字注解*/
+#code .annotation{color:blue;font-weight:bold}
+/*双星注解*/
+#code .note{color:#800080}

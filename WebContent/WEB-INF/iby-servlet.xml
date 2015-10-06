@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		">
+		
+	<!-- 开始spring mvc的注解 -->
+	 <mvc:annotation-driven/>
+	 <!-- <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" /> <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"> <property name="favorPathExtension" value="false" /> <property name="favorParameter" value="false" /> <property name="ignoreAcceptHeader" value="false" /> <property name="mediaTypes" > <value> atom=application/atom+xml html=text/html json=application/json *=*/* </value> </property> </bean>
+		-->
+	
+	<!-- 这样根目录下面的resource的文件(.css,.js等)就不会被spring的DispatchServlet进行过滤 -->
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+	    <!-- 多个拦截器,顺序执行 -->
+	    <mvc:interceptor>
+	      <!-- <mvc:mapping path="/user/*" />如果不配置或/*,将拦截所有的Controller -->
+	       <mvc:mapping path="/**" /><!-- 如果不配置或/*,将拦截所有的Controller -->
+	       <bean class="com.fatiny.controller.CommonInterceptor"></bean>
+	        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 --> 
+	    </mvc:interceptor>
+	    
+	</mvc:interceptors>
+
+	<context:component-scan base-package="com.fatiny.controller"/>
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+	</bean>
+
+<!--     <mvc:interceptors>   -->
+<!--   		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" ></bean> -->
+<!-- 	</mvc:interceptors> -->
+
+	<!-- 配置国际化资源文件路径 -->
+<!-- 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"> -->
+		<!-- 定义消息资源文件的相对路径 -->
+<!-- 		<property name="basename" > -->
+<!-- 			<list> -->
+<!-- 				<value>message</value>   -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 		<property name="useCodeAsDefaultMessage" value="true" />    -->
+		
+<!-- 	</bean> -->
+	 <!-- 基于Cookie的本地化解析器 -->
+<!-- 	 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"> -->
+	 	<!-- 设置最大有效时间，如果是-1，则不存储，浏览器关闭后即失效，默认为Integer.MAX_INT-->
+<!-- 	 	<property name="cookieMaxAge" value="604800"/> -->
+<!-- 	 	<property name="defaultLocale" value="zh_CN"/> -->
+	 	<!-- 设置cookieName名称，可以根据名称通过js来修改设置，也可以像上面演示的那样修改设置，默认的名称为 类名+LOCALE（即：org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE-->
+<!-- 	 	<property name="cookieName" value="Language"></property> -->
+<!-- 	 </bean> -->
+	 
+	<!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />-->
+<!-- 	 <bean name="languageController" class="com.fatiny.controller.LanguageController">   -->
+        <!--(1)依赖注入,配置当前类中相应的属性-->  
+<!--         <property name="localeResolver" ref="localeResolver"></property>   -->
+<!--     </bean>   -->
+    
+</beans>
