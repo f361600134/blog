@@ -12,10 +12,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<nav id="footer-nav" class="clearfix">
 					<ul>
 						<li><a href="index.htm">Home</a></li>
-						<!-- <li><a href="features-shortcodes-elements.html">Features</a></li>
-						<li><a href="pages-about.html">Pages</a></li>
-						<li><a href="portfolio-3columns.html">Portfolio</a></li> -->
-						<!-- <li><a href="blog.htm">Blog</a></li> -->
 						<li><a href="contacts.htm">Contact</a></li>
 					</ul>
 				</nav><!--/ #footer-nav-->
@@ -27,6 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- Login <div class="mybox"></div>-->
 			<div  class="one-half last">
 				<ul data-description="Stay in touch via social networks:" class="social-links clearfix">
+						<li data-tooltip="WeChat" class="wechat" id="">
+							<a href="https://twitter.com/nicc_fsc" target="_blank">WeChat</a>
+						</li>
 						<li data-tooltip="Sina" class="sina" id="">
 							<a href="http://weibo.com/2308412664" target="_blank">Sina</a>
 						</li>
@@ -51,15 +50,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 			</ul>/ .social-links -->
 			
 		</footer>
-		
 		<!-- ************ - end Footer - ************ -->
 	</section><!--/ .container-->
-	
 	<!-- *************** - end Container - *************** -->
-
 	
 	<!-- ************ - Footer Bottom - ************ -->
-	
 	<footer id="footer-bottom">
 		
 		<a href="#" id="footer-more"></a>
@@ -121,52 +116,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- end -->
 
 <!-- post-singel -->
-<!-- <script src="<%=path %>/js/blog/respond.min.js"></script> -->
-<!-- <script src="<%=path %>/js/blog/jquery.easing-1.3.min.js"></script> -->
 <script src="<%=path %>/fancybox/jquery.fancybox.pack.js"></script>
 <script src="<%=path %>/js/blog/jquery.cycle.all.min.js"></script>
 <script src="<%=path %>/js/blog/jquery.touchSwipe-1.2.5.min.js"></script>
-<!-- <script src="<%=path %>/js/blog/common.js"></script> -->
-<!-- <script src="<%=path %>/themeChanger/js/colorpicker.js"></script> -->
-<!-- <script src="<%=path %>/themeChanger/js/themeChanger.js"></script> -->
-<!-- end singel -->
-
-<!-- blog -->
-<!-- <script src="<%=path %>/js/blog/jquery.cycle.all.min.js"></script> -->
-<!-- <script src="<%=path %>/js/blog/jquery.ui.widget.min.js"></script> -->
-<!-- <script src="<%=path %>/js/blog/respond.min.js"></script> -->
-<!-- <script src="<%=path %>/js/blog/jquery.easing-1.3.min.js"></script> -->
-<!-- <script src="<%=path %>/fancybox/jquery.fancybox.pack.js"></script> -->
-<!-- <script src="<%=path %>/js/blog/audioplayerv1.js"></script> -->
-<!-- <script src="<%=path %>/js/blog/jquery.touchSwipe-1.2.5.min.js"></script> -->
-<!-- <script src="<%=path %>/js/blog/custom.js"></script> -->
-<!-- <script src="<%=path %>/themeChanger/js/colorpicker.js"></script> -->
-<!-- <script src="<%=path %>/themeChanger/js/themeChanger.js"></script> -->
-<!-- end -->
-
-<!-- contact
-<script type="text/javascript" src="<%=path %>/js/blog/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="<%=path %>/js/blog/jquery-1.7.1.min.js"><\/script>')</script>
-<script src="<%=path %>/js/blog/respond.min.js"></script>
-<script src="<%=path %>/js/blog/jquery.easing-1.3.min.js"></script>
-<script src="<%=path %>/js/blog/jquery.gmap.min.js"></script> 
-<script src="<%=path %>/js/blog/custom.js"></script>
-<script src="<%=path %>/themeChanger/js/colorpicker.js"></script>
-<script src="<%=path %>/themeChanger/js/themeChanger.js"></script>
-end contact -->
-
-<!-- about -->
-<!-- <script src="js/respond.min.js"></script> -->
-<!-- <script src="js/jquery.easing-1.3.min.js"></script> -->
-<!-- <script src="js/jquery.cycle.all.min.js"></script> -->
-<!-- <script src="js/jquery.elegantAccordion.js"></script> -->
-<!-- <script src="js/custom.js"></script> -->
-<!-- <script src="themeChanger/js/colorpicker.js"></script> -->
-<!-- <script src="themeChanger/js/themeChanger.js"></script> -->
-<!-- <script type="text/javascript" src="<%=path %>/js/about/garden.js"></script> -->
-<!-- <script type="text/javascript" src="<%=path %>/js/about/jquery.js"></script> -->
-<!-- <script type="text/javascript" src="<%=path %>/js/about/functions.js"></script> -->
-<!-- end -->
 
 
 </body>

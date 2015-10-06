@@ -129,7 +129,7 @@ public class FrontController {
 		//组装sql
 		String hql = null;
 		if (tagid != null) {
-			hql = "from Blog b where b.bid in (select bt.bid from blogTag bt where bt.tid = "+tagid+") order by b.postDate desc";
+			hql = "from Blog b where b.bid in (select bt.bid from BlogTag bt where bt.tid = "+tagid+") order by b.postDate desc";
 		}else {
 			//组装hql和参数
 			hql = creactQuery(cateid, text,date);

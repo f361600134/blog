@@ -4,7 +4,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/front/";
-// String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <jsp:include page="include/header.jsp"/>
 
@@ -84,8 +83,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 				<div class="page-title clearfix">
 					<div class="pagination">
 						${link}
-						<!-- <a href="index.htm?pagenum=${page.pageNum-1}" class="prev-project">Older Posts</a> --><!-- / .prev-project -->
-						<!-- <a href="index.htm?pagenum=${page.pageNum+1}" class="next-project">Newer Posts</a> --><!--/ .next-project-->
 					</div><!--/ .pagination-->
 
 				</div><!--/ .page-title--> 
@@ -94,39 +91,26 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 			
 			
 			<!-- ********** - Sidebar - ************ -->
-			
 			<aside id="sidebar">
 				
 				<div class="widget">
-					
 					<h1 class="widget-title">Categories</h1>
-
 					<ul class="feature-menu">
-<!-- 						<li><a href="#">Photography</a>&nbsp;<span>(12)</span></li> -->
-<!-- 						<li><a href="#">Web Design</a>&nbsp;<span>(3)</span></li> -->
-<!-- 						<li><a href="#">Motion</a>&nbsp;<span>(7)</span></li> -->
-<!-- 						<li><a href="#">Illustration</a>&nbsp;<span>(15)</span></li> -->
-<!-- 						<li><a href="#">Inspiration </a>&nbsp;<span>(9)</span></li> -->
-<!-- 						<li><a href="#">Freebies</a>&nbsp;<span>(2)</span></li> -->
 						<c:forEach var="cate" items="${categories}" varStatus="status">
 							<li><a href="index.htm?cateid=${cate.id}">${cate.name}</a>&nbsp;<span></span></li>
 						</c:forEach>
 					</ul><!--/ .feature-menu-->
-					
 				</div><!--/ .widget-->
 				
 				<div class="widget">
 					
 					<!-- *************** - Tabs Container - *************** -->
 					<div class="aside-tabs">
-						
 						<ul class="tabs-nav clearfix">
-
 							<li class="popular" data-tooltip="Popular"><a href="#tab4">Popular Posts</a></li>
 							<li class="tags" data-tooltip="Tags"><a href="#tab6">Tags</a></li>
 							<li class="recent" data-tooltip="Facebook"><a href="#tab5">Recent Posts</a></li>
 							<li class="latest" data-tooltip="Twitter"><a href="#tab7">Latest Tweets</a></li>
-
 						</ul><!--/ .tabs-nav -->
 
 						<div class="tabs-container">
@@ -147,41 +131,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 								</c:forEach>
 								</ul>
 							</div><!--/ #tab4-->
-							<!-- 
-							<div class="tab-content" id="tab5">
-								<ul class="small-thumb">
-									<li>
-										<a href="#"><img class="alignleft" src="<%=path %>/images/temp/pic_thumb_2.jpg" alt="" /></a>
-										<div class="entry">
-											<h6><a href="#">Donec in velit vel ipsum auctor.</a></h6>
-											<div class="entry-meta">
-												<a class="post-date" href="#"><span>03/29/2012</span></a>
-											</div>
-										</div>
-										<div class="clear"></div>
-									</li>
-									<li>
-										<a href="#"><img class="alignleft" src="<%=path %>/images/temp/pic_thumb_1.jpg" alt="" /></a>
-										<div class="entry">
-											<h6><a href="#">Donec in velit vel ipsum auctor.</a></h6>
-											<div class="entry-meta">
-												<a class="post-date" href="#"><span>03/29/2012</span></a>
-											</div>	
-										</div>
-										<div class="clear"></div>
-									</li>
-									<li>
-										<a href="#"><img class="alignleft" src="<%=path %>/images/temp/pic_thumb_3.jpg" alt="" /></a>
-										<div class="entry">
-											<h6><a href="#">Donec in velit vel ipsum auctor.</a></h6>
-											<div class="entry-meta">
-												<a class="post-date" href="#"><span>03/29/2012</span></a>
-											</div>
-										</div>
-										<div class="clear"></div>
-									</li>
-								</ul>
-							</div><!--/ #tab5-->
 							<div class="tab-content" id="tab6">
 								<ul class="tag-list">
 								<c:forEach var="tag" items="${tags}" varStatus="status">
@@ -206,7 +155,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 					<!-- ************** - end Tabs Container - ************** -->	
 					
 				</div><!--/ .widget-->
-				
 				<!-- 
 				<div class="widget">
 					<h1 class="content-title">Recent Projects</h1>

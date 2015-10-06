@@ -14,6 +14,9 @@ public class Content {
 	public static String withouthref = "posts_without_media.htm?pagenum=";
 	/***end***/
 
+	/**contact: default head image*/
+	public static String headImg = "images/gravatar.png";
+	/***/
 	
 	/** mark **/
 	//public static final String ALL_BLOGS		=	"blogs";
@@ -29,12 +32,10 @@ public class Content {
 	public static final String ALL_CATEGORY		=	"categorys";
 	public static final String ALL_TAG			=	"tags";
 	public static final String ALL_PROJECT		=	"projects";
-	//public static final String SINGLE_CONTACT	=	"contact";
 	
 	public static final String HOME_CONTACT		=	"home_contacts";
 	public static final String HOME_BLOG		=	"home_blogs";
 	
-	//public static final String RECENT_BLOG		=	"recent_blogs";
 	public static final String POPULAR_BLOG		=	"popular_blogs";
 	public static final String RECENT_PROJECT	=	"recent_projects";
 	/**end mark**/

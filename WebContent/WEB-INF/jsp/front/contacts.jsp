@@ -37,20 +37,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<br class="clear">
 					</fieldset>
 					<button type="submit" class="button-style-2 medium">Send Message</button>
-					<!--<label style="margin-left:1px;font-family:Microsoft YaHei">请先登录,登陆在网站底部</label>
-					 Login <div class="mybox"></div>-->
-					 <!-- 临时登陆 -->
-					<ul data-description="Log in:" class="social-links">
-						<li data-tooltip="Facebook" class="facebook" id="FB" >
-							<a href="javascript:void(0);">Facebook</a>
-						</li>
-						<li data-tooltip="QQ" class="qq" id="qqbt" >
-							<a href="javascript:void(0);">QQ</a>
-						</li>
-						<li data-tooltip="Sina" class="sina">
-							<a href="javascript:void(0);">Sina</a>
-						</li>
-					</ul><!--/ .social-links-->
+				 	<!--  <div class="mybox"></div>-->
+					<!-- 临时登陆 -->
+<!-- 					<ul data-description="Log in:" class="social-links"> -->
+<!-- 						<li data-tooltip="Sina" class="sina" id="wb_connect_btn"> -->
+<!-- 							<a href="https://api.weibo.com/oauth2/authorize?client_id=769348763&redirect_uri=http://fatiny.com/user/Sinalogin.htm&response_type=code&state=1">Sina</a> -->
+<!-- 						</li> -->
+<!-- 						<li data-tooltip="QQ" class="qq" id="qqbt"> -->
+<!-- 							<a href="http://openapi.qzone.qq.com/oauth/show?which=ConfirmPage&display=pc&client_id=101239300&response_type=token&scope=all&state=2&redirect_uri=http%3A%2F%2Fqzonestyle.gtimg.cn%2Fqzone%2Fopenapi%2Fredirect-1.0.1.html">QQ</a> -->
+<!-- 						</li> -->
+<!-- 					</ul> -->
 				</form>
 				
 			</div><!--/ .three-fourth .last-->

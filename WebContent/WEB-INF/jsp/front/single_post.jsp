@@ -3,16 +3,21 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/";
+//String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/";
+String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/front/";
 %>
 
 <jsp:include page="include/header.jsp"/>
+	<link rel="stylesheet" href="<%=path %>/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css" type="text/css"></link></head>
+	<script type="text/javascript" src="<%=path %>/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
 	<link rel="stylesheet" href="<%=path %>/fancybox/jquery.fancybox.css" media="screen" />
 	<script>!window.jQuery && document.write('<script src="<%=path %>/js/blog/jquery-1.7.1.min.js"><\/script>')</script>
 	<link rel="stylesheet" href="<%=path %>/fancybox/jquery.fancybox.css" media="screen" />
 	<link rel="stylesheet" href="<%=path %>/css/blog/video-js.css" />
 	<link rel="stylesheet" href="<%=path %>/css/blog/audioplayerv1.css" media="screen" />
-	
 	<script src="<%=path %>/js/blog/video.js"></script>
 	<script>_V_.options.flash.swf = '<%=path %>/js/blog/video-js.swf';</script>
 	<script src="<%=path %>/js/blog/jquery.ui.widget.min.js"></script>
@@ -20,22 +25,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 	<script src="<%=path %>/js/blog/audioplayerv1.js"></script>
 	<script src="<%=path %>/js/blog/common.js"></script>
 	<script src="<%=path %>/js/blog/jquery.touchSwipe-1.2.5.min.js"></script>
-		
-<!-- 		<link rel="stylesheet" href="<%=path %>/admin/makedown/SyntaxHighlighter/styles/shCoreDefault.css" type="text/css"></link> -->
-<!-- 		<link rel="stylesheet" href="<%=path %>/admin/makedown/SyntaxHighlighter/styles/shCore.css" type="text/css"></link> -->
-<!-- 		<script type="text/javascript" src="<%=path %>/admin/makedown/SyntaxHighlighter/scripts/shBrushJava.js"></script> -->
-<!-- 		<script type="text/javascript" src="<%=path %>/admin/makedown/SyntaxHighlighter/scripts/shCore.js"></script> -->
-<!-- 		<script type="text/javascript"> -->
-<!-- 			SyntaxHighlighter.defaults['toolbar'] = false; -->
-<!-- 			SyntaxHighlighter.all();   -->
-<!-- 		</script> -->
-		
-		
-		<link rel="stylesheet" href="<%=path %>/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css" type="text/css"></link></head>
-		<script type="text/javascript" src="<%=path %>/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
-		<script type="text/javascript">
-			SyntaxHighlighter.all();
-		</script>
 		
 		
 		<!-- **************** - END Header - **************** -->
@@ -94,16 +83,16 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 
 						<ul data-description="Share this:" class="social-links">
 							<li data-tooltip="Twitter" class="twitter">
-								<a href="javascript:void(0);" onclick="shareTwitter('<%=myPath%>single-post.htm?bid=${blog.bid}')">Twitter</a>
+								<a href="javascript:void(0);" onclick="shareTwitter('<%=myPath%>single_post.htm?bid=${blog.bid}')">Twitter</a>
 							</li>
 							<li data-tooltip="Facebook" class="facebook">
-								<a href="javascript:void(0);" onclick="shareFacebook('<%=myPath%>single-post.htm?bid=${blog.bid}')">Facebook</a>
+								<a href="javascript:void(0);" onclick="shareFacebook('<%=myPath%>single_post.htm?bid=${blog.bid}')">Facebook</a>
 							</li>
 							<li data-tooltip="Qzone" class="qzone">
-								<a href="javascript:void(0);" onclick="shareQzone('${blog.title}','<%=myPath%>single-post.htm?bid=${blog.bid}')" >Qzone</a>
+								<a href="javascript:void(0);" onclick="shareQzone('${blog.title}','<%=myPath%>single_post.htm?bid=${blog.bid}')" >Qzone</a>
 							</li>
 							<li data-tooltip="Sina" class="sina">
-								<a href="javascript:void(0);" onclick="shareSina('${blog.title}','<%=myPath%>single-post.htm?bid=${blog.bid}')" >Sina</a>
+								<a href="javascript:void(0);" onclick="shareSina('${blog.title}','<%=myPath%>single_post.htm?bid=${blog.bid}')" >Sina</a>
 							</li>
 						</ul><!--/ .social-links-->	
 
@@ -183,9 +172,7 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 
 				</section><!--/ #comments-->
 				
-				
 				<section id="respond">
-
 					<h3 class="content-title">Leave a Comment</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod  aliqua.</p>
 					<form method="post" id="comments-form" class="comments-form" action="single-post.htm"><!-- action="single-post.htm?bid=${blog.bid}&cid=0 "-->
@@ -201,41 +188,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 						</fieldset>
 
 						<button class="button-style-2 medium" type="submit">Submit Comment</button>
-						<!-- 临时登陆 -->
-						<ul data-description="Log in:" class="social-links">
-							<li data-tooltip="Facebook" class="facebook" id="FB" >
-								<a href="javascript:void(0);">Facebook</a>
-							</li>
-							<li data-tooltip="QQ" class="qq" id="qqbt" >
-								<a href="javascript:void(0);">QQ</a>
-							</li>
-							<li data-tooltip="Sina" class="sina">
-								<a href="javascript:void(0);">Sina</a>
-							</li>
-						</ul><!--/ .social-links-->
-						
-<%-- 						<c:choose> --%>
-<%-- 						   <c:when test="${empty user}"> --%>
-<!-- 						   		临时登陆 -->
-<!-- 								<ul data-description="Log in:" class="social-links"> -->
-<!-- 									<li data-tooltip="Facebook" class="facebook" id="fb" > -->
-<!-- 										<a href="javascript:fb_login();">Facebook</a> -->
-<!-- 									</li> -->
-<!-- 									<li data-tooltip="QQ" class="qq" id="qqbt" > -->
-<!-- 										<a href="javascript:void(0);">QQ</a> -->
-<!-- 									</li> -->
-<!-- 									<li data-tooltip="Sina" class="sina"> -->
-<!-- 										<a href="javascript:void(0);">Sina</a> -->
-<!-- 									</li> -->
-<!-- 								</ul>/ .social-links -->
-<%-- 						   </c:when> --%>
-<%-- 						   <c:otherwise> --%>
-<!-- 						   		<div class="alignright"> -->
-<%-- 						   		<img class="" src="${user.icon}" alt="${user.nickName}" title="${user.nickName}" /> --%>
-<%-- 						   		${user.nickName} --%>
-<!-- 						   		</div>					   		 -->
-<%-- 						   </c:otherwise> --%>
-<%-- 						</c:choose> --%>
 					</form><!--/ .comments-form-->
 
 				</section><!--/ #respond-->
@@ -252,12 +204,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 					<h1 class="widget-title">Categories</h1>
 
 					<ul class="feature-menu">
-<!-- 						<li><a href="pages-about.html">About Us</a></li> -->
-<!-- 						<li><a href="pages-full-width.html">Full Width Page</a></li> -->
-<!-- 						<li><a href="pages-with-right-sidebar.html">Page Width Right Sidebar</a></li> -->
-<!-- 						<li><a href="pages-with-left-sidebar.html">Page Width Left Sidebar</a></li> -->
-<!-- 						<li><a href="pages-archives.html">Archives</a></li> -->
-<!-- 						<li><a href="pages-404.html">404 Page</a></li> -->
 					<c:forEach var="cate" items="${categories}" varStatus="status">
 							<li><a href="blog.htm?cateid=${cate.id}">${cate.name}</a>&nbsp;<span></span></li>
 					</c:forEach>
@@ -297,41 +243,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 								</c:forEach>
 								</ul>
 							</div><!--/ #tab4-->
-							<!-- 
-							<div class="tab-content" id="tab5">
-								<ul class="small-thumb">
-									<li>
-										<a href="#"><img class="alignleft" src="<%=path %>/images/temp/pic_thumb_2.jpg" alt="" /></a>
-										<div class="entry">
-											<h6><a href="#">Donec in velit vel ipsum auctor.</a></h6>
-											<div class="entry-meta">
-												<a class="post-date" href="#"><span>03/29/2012</span></a>
-											</div>
-										</div>
-										<div class="clear"></div>
-									</li>
-									<li>
-										<a href="#"><img class="alignleft" src="<%=path %>/images/temp/pic_thumb_1.jpg" alt="" /></a>
-										<div class="entry">
-											<h6><a href="#">Donec in velit vel ipsum auctor.</a></h6>
-											<div class="entry-meta">
-												<a class="post-date" href="#"><span>03/29/2012</span></a>
-											</div>	
-										</div>
-										<div class="clear"></div>
-									</li>
-									<li>
-										<a href="#"><img class="alignleft" src="<%=path %>/images/temp/pic_thumb_3.jpg" alt="" /></a>
-										<div class="entry">
-											<h6><a href="#">Donec in velit vel ipsum auctor.</a></h6>
-											<div class="entry-meta">
-												<a class="post-date" href="#"><span>03/29/2012</span></a>
-											</div>
-										</div>
-										<div class="clear"></div>
-									</li>
-								</ul>
-							</div><!--/ #tab5-->
 							<div class="tab-content" id="tab6">
 								<ul class="tag-list">
 								<c:forEach var="tag" items="${tags}" varStatus="status">
@@ -356,43 +267,9 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 					<!-- ************** - end Tabs Container - ************** -->	
 					
 				</div><!--/ .widget-->
-				
-				<!-- 
-				<div class="widget">
-					<h1 class="content-title">Latest Projects</h1>
-					<ul class="latest">
-						<li>
-							<a href="#">
-								<img alt="" src="<%=path %>/images/temp/220px_1.jpg">
-								<h3 class="title">Suspendisse sollicitudin</h3>
-								<span class="desc">Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci...</span>
-							</a>		
-						</li>
-						<li>
-							<a href="#">
-								<img alt="" src="<%=path %>/images/temp/220px_2.jpg">
-								<h3 class="title">Aliquam dapibus tincidunt</h3>
-								<span class="desc">Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci...</span>
-							</a>		
-						</li>
-						<li>
-							<a href="#">
-								<img alt="" src="<%=path %>/images/temp/220px_3.jpg">
-								<h3 class="title">Donec sagittis euismod</h3>
-								<span class="desc">Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci...</span>
-							</a>		
-						</li>
-					</ul>
-					<div class="latest-controls">
-						<a href="#" id="prev"></a>
-						<a href="#" id="next"></a>
-					</div>
-				</div><!--/ .widget-->
 
 				<div class="widget">
-					
 					<h1 class="content-title">Recent Comments</h1>
-					
 					<ul class="recent-comments">
 						<li><a href="#" class="author">Sam</a>&nbsp;<small>on</small>&nbsp;<a href="#">Aenean auctor wisi et urna</a></li>
 						<li><a href="#" class="author">Alice</a>&nbsp;<small>on</small>&nbsp;<a href="#">Vestibulum ante ipsum primis in</a></li>
@@ -400,7 +277,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+path+"/front/"
 						<li><a href="#" class="author">John</a>&nbsp;<small>on</small>&nbsp;<a href="#">Sed ut perspiciatis sit</a></li>
 						<li><a href="#" class="author">Linda</a>&nbsp;<small>on</small>&nbsp;<a href="#">Neque porro quisquam</a></li>
 					</ul><!--/ .recent-comments-->
-					
 				</div><!--/ .widget-->
 				
 				
