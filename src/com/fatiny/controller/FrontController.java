@@ -327,7 +327,7 @@ public class FrontController {
 	 * @param con
 	 * @param r
 	 */
-	@RequestMapping(value = "/single-post.htm" ,method = RequestMethod.POST)
+	@RequestMapping(value = "/single_post.htm" ,method = RequestMethod.POST)
 	public void single(HttpServletRequest request,Model model,Contact con){
 		log.info("提交联系方式="+con);
 		//如果有文章id,则修改.
