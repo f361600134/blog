@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- Login <div class="mybox"></div>-->
 			<div  class="one-half last">
 				<ul data-description="Stay in touch via social networks:" class="social-links clearfix">
-						<li data-tooltip="WeChat" class="wechat" id="">
+						<li data-tooltip="WeChat:huuzii" class="wechat" id="">
 							<a href="https://twitter.com/nicc_fsc" target="_blank">WeChat</a>
 						</li>
 						<li data-tooltip="Sina" class="sina" id="">
@@ -66,7 +66,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="widget-text">
 					<h1>About Me</h1>
 					<p>
-						关于我该怎么写呢?幽默阳光帅气?还没想好怎么办?啊啊啊啊,要疯了! 
+						我是程序猿黑咔嚓
+					</p>
+					<p>
+						Java开启了我的程序之路。 现在正在修行Jbjective-C。<br>
 					</p>
 					<p>
 						先就这样吧,哈哈!

@@ -132,9 +132,8 @@ input, select {vertical-align:middle;}
 /* ---------------------------------------------------------------------- */
 /*	Basic Elements
 /* ---------------------------------------------------------------------- */
-
 body {
-	font: 81.3%/1.5em 'Droid Serif', serif;
+	font: 81.3%/1.5em 'Comic Sans MS','MicroSoft Yahei', 'Hiragino Sans GB', 'Droid Serif', serif;
 	-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 	-webkit-text-size-adjust: 100%;
 }
@@ -153,7 +152,7 @@ body.fixed {background-repeat: repeat;}
 
 /* Body Liquid  --> Begin */
 
-body.liquid.light.l-pattern-1 {background-image: url(../../images/bgs/l-bg-1.png);}
+body.liquid.light.l-pattern-1 {/*background-image: url(../../images/bgs/l-bg-1.png);*/}
 body.liquid.light.l-pattern-2 {background-image: url(../../images/bgs/l-bg-2.png);}
 body.liquid.light.l-pattern-3 {background-image: url(../../images/bgs/l-bg-3.png);}
 body.liquid.light.l-pattern-4 {background-image: url(../../images/bgs/l-bg-4.png);}
@@ -162,7 +161,7 @@ body.liquid.light.l-pattern-6 {background-image: url(../../images/bgs/l-bg-6.png
 body.liquid.light.l-pattern-7 {background-image: url(../../images/bgs/l-bg-7.png);}
 body.liquid.light.l-pattern-8 {background-image: url(../../images/bgs/l-bg-8.png);}
 
-body.liquid.dark.l-pattern-1 {background-image: url(../../images/bgs/ld-bg-1.png);}
+body.liquid.dark.l-pattern-1 {/*background-image: url(../../images/bgs/ld-bg-1.png);*/}
 body.liquid.dark.l-pattern-2 {background-image: url(../../images/bgs/ld-bg-2.png);}
 body.liquid.dark.l-pattern-3 {background-image: url(../../images/bgs/ld-bg-3.png);}
 body.liquid.dark.l-pattern-4 {background-image: url(../../images/bgs/ld-bg-4.png);}
@@ -928,7 +927,7 @@ ul.contact-info .email {background-repeat: no-repeat;}
 .dark ul.contact-info .phone,
 .dark ul.contact-info .email {background-image: url(../../images/icons/contact-icons-dark.png);}
 
-ul.contact-info .phone {background-position: 0 3px;}
+ul.contact-info .phone {background-position: 0 -3px;}
 ul.contact-info .email {background-position: 0 -25px;}
 
 
@@ -984,11 +983,11 @@ ul.contact-info .email {background-position: 0 -25px;}
 			.navigation > ul li:hover span.downarrowclass {background-position: 0 -282px;}
 
 			.navigation > ul > li:last-child {padding-right: 0;}
-
 				.navigation > ul > li > a {
 					font-size: 1.077em;
-					font-family: 'Comic Sans MS','Droid Serif', serif;
-					font-style: italic;
+					/*'Helvetica','Hiragino Sans GB','Comic Sans MS','MicroSoft YaHei'*/
+					font-family: 'MicroSoft YaHei','Droid Serif', serif;
+					font-style: normal ;
 				}
 				
 				.navigation ul > li:hover > a {color: #a6412b;}
@@ -1193,9 +1192,10 @@ ul.contact-info .email {background-position: 0 -25px;}
 	ul.social-links li.qq:hover a {background-color: #45b0e3 !important;;}
 	ul.social-links li.qzone:hover a {background-color: #f4c600 !important;;}
 
+	/*share静止状态下的图标显示*/
 	ul.social-links .rss a {background-position: 0 0;}
-	ul.social-links .facebook a {background-position: -29px 0;}
-	ul.social-links .twitter a {background-position: -58px 0;}
+	ul.social-links .facebook a {background-position: 0 -72px;}
+	ul.social-links .twitter a {background-position: -29px -72px;}
 	ul.social-links .flickr a {background-position: -87px 0;}
 	ul.social-links .linked a {background-position: -116px 0;}
 	ul.social-links .google a {background-position: -174px -48px;}
@@ -1205,12 +1205,13 @@ ul.contact-info .email {background-position: 0 -25px;}
 	ul.social-links .qq a {background-position: -204px -2px;}
 	ul.social-links .qzone a {background-position: -228px -48px;}
 	
+	/* 折叠,平滑效果 
 	ul.social-links .rss:hover a {background-position: 0 -24px;}
 	ul.social-links .facebook:hover a {background-position: -29px -24px;}
 	ul.social-links .twitter:hover a {background-position: -58px -24px;}
 	ul.social-links .flickr:hover a {background-position: -87px -24px;}
 	ul.social-links .linked:hover a {background-position: -116px -24px;}
-
+	
 	.accordion ul.social-links .facebook a {background-position: 0 -48px;}
 	.accordion ul.social-links .twitter a {background-position: -29px -48px;}
 	.accordion ul.social-links .flickr a {background-position: -58px -48px;}
@@ -1223,7 +1224,8 @@ ul.contact-info .email {background-position: 0 -25px;}
 	.accordion ul.social-links .linked:hover a {background-position: -87px -72px;}
 	.accordion ul.social-links .skype:hover a {background-position: -116px -72px;}
 	.accordion ul.social-links .mail:hover a {background-position: -145px -72px;}
-	
+	*/
+	/*头尾静止状态下的图标显示*/
 	.meta ul.social-links .facebook:hover a,
 	.post-item ul.social-links .facebook:hover a {background-position: 0 -72px;}
 	.meta ul.social-links .twitter:hover a,
@@ -1240,6 +1242,7 @@ ul.contact-info .email {background-position: 0 -25px;}
 	.post-item ul.social-links .qq:hover a {background-position: -204px -25px;}
 	.meta ul.social-links .qzone:hover a,
 	.post-item ul.social-links .qzone:hover a {background-position: -228px -72px;}
+	
 	
 	.light .accordion ul.social-links a {background-color: #aab2ad;}
 	.dark .accordion ul.social-links a {background-color: #58605B;}
@@ -2307,11 +2310,12 @@ ul.related span.categories {color: #50554e; font-style: italic;}
 			background-repeat: no-repeat;
 		}
 		
+		
 		.light .contact-list li {background-image: url(../../images/icons/contact-icons-light.png);}
 		.dark .contact-list li {background-image: url(../../images/icons/contact-icons-dark.png);}
 		
-		.contact-list li.contact-phone {background-position: 0 -65px;}
-		.contact-list li.contact-mail {background-position: 0 -104px;}
+		.contact-list li.contact-phone {background-position: 0 -47px;}
+		.contact-list li.contact-mail {background-position: 0 -73px;}
 		.contact-list li.contact-skype {background-position: 0 -146px;}
 		
 			.contact-list li a {color: #7e8a83;}
@@ -3469,8 +3473,8 @@ ul.related span.categories {color: #50554e; font-style: italic;}
 				background-image: url(../../images/bg-nav.png);
 				background-repeat: no-repeat;
 				background-position: right top;
-				/*font-style: italic;*/
-				font-family: 'Comic Sans MS','Droid Serif';
+				font-style: normal;
+				font-family: 'MicroSoft YaHei','Hiragino Sans GB','Comic Sans MS','Droid Serif';
 			}
 			
 			.light .nav-responsove {background-color: #fff;}

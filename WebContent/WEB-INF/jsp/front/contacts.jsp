@@ -17,17 +17,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						Glasgow, D04 89GR.
 					</p>
 					<ul class="contact-list">
-						<li class="contact-phone">+132 4913 8641</li>
+						<li class="contact-phone">361600134</li>
 						<li class="contact-mail">
 							<a href="mailto:361600134@qq.com">361600134@qq.com</a>
 						</li>
-						<li class="contact-skype">skype.name</li>
+						<!-- <li class="contact-skype">skype.name</li> -->
 					</ul><!--/ .contact-list-->
 				</div><!--/ .contact-block-->
 			</div><!--/ .one-fourth-->
 			<div class="three-fourth last">
 				<h2 class="content-title">Drop Me a Line</h2>
-				<p>要登录才能发表留言哦,精彩留言会显示在网站首页哦~</p>
+				<!-- <p></p> -->
 				<form action="" class="contacts-form" id="contacts-form" method="post">
 					<fieldset>
 						<label class="input-block"><input type="text" name="name" value="" placeholder="Name (required)"></label>

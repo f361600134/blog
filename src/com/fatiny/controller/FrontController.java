@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.fatiny.pojo.Blog;
 import com.fatiny.pojo.Category;
 import com.fatiny.pojo.Contact;
+import com.fatiny.pojo.Logo;
 import com.fatiny.pojo.Page;
 import com.fatiny.pojo.Tag;
 import com.fatiny.service.BlogService;
@@ -145,6 +146,12 @@ public class FrontController {
 			model.addAttribute(Content.BLOG_LINK,appedLink(tagid, cateid, text, date, blogType,page));
 			
 			/*侧边栏使用.这部分可以改成,登陆是就存入session.*/
+			//log
+			//logo
+			if (request.getSession().getAttribute(Content.SINGLE_LOGO) == null) {
+				Logo logo = this.loservice.getById(1);
+				model.addAttribute(Content.SINGLE_LOGO, logo);
+			}
 			//分类管理session,
 			if (request.getSession().getAttribute(Content.ALL_CATEGORIES) == null){
 				List<Category> Categories = this.cateService.getAll();
@@ -156,7 +163,8 @@ public class FrontController {
 				request.getSession().setAttribute(Content.ALL_TAG,tags);
 			}
 			//最热门文章session
-			if (request.getSession().getAttribute(Content.POPULAR_BLOG) == null){
+			//if (request.getSession().getAttribute(Content.POPULAR_BLOG) == null)
+			{
 				hql = "from Blog b order by b.viewTimes desc";
 				List<Blog> tags = this.bservice.findListByLimitFirst(hql, 3);
 				request.getSession().setAttribute(Content.POPULAR_BLOG,tags);
@@ -166,7 +174,6 @@ public class FrontController {
 //				List<Project> pros = this.proService.findByLimitMax();
 //				model.addAttribute(Content.RECENT_PROJECT, pros);
 //			}
-			/**/
 			log.info("The total time"+(System.currentTimeMillis()-beginTime));
 		} catch (Exception e) {
 			log.error(e.toString());
@@ -315,6 +322,7 @@ public class FrontController {
 			List<Category> Categories = this.cateService.getAll();
 			model.addAttribute(Content.ALL_CATEGORIES,Categories);
 		}
+		
 		log.info("The single total time"+(System.currentTimeMillis()-beginTime));
 		
 		return "/front/single_post";

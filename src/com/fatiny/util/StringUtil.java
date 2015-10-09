@@ -876,6 +876,7 @@ public class StringUtil {
 				long filesize = file.length();
 				if (filesize == 0)
 					return true;
+				@SuppressWarnings("resource")
 				BufferedReader input = new BufferedReader(new FileReader(file));
 				StringBuffer buffer = new StringBuffer();
 
