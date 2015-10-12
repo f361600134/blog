@@ -150,12 +150,13 @@ public class FrontController {
 			//logo
 			if (request.getSession().getAttribute(Content.SINGLE_LOGO) == null) {
 				Logo logo = this.loservice.getById(1);
-				model.addAttribute(Content.SINGLE_LOGO, logo);
+				request.getSession().setAttribute(Content.SINGLE_LOGO, logo);
 			}
 			//分类管理session,
-			if (request.getSession().getAttribute(Content.ALL_CATEGORIES) == null){
+			//if (request.getSession().getAttribute(Content.ALL_CATEGORIES) == null)
+			{
 				List<Category> Categories = this.cateService.getAll();
-				request.getSession().setAttribute(Content.ALL_CATEGORIES,Categories);
+				model.addAttribute(Content.ALL_CATEGORIES,Categories);
 			}
 			//标签session
 			if (request.getSession().getAttribute(Content.ALL_TAG) == null){
@@ -335,7 +336,7 @@ public class FrontController {
 	 * @param con
 	 * @param r
 	 */
-	@RequestMapping(value = "/single-post.htm" ,method = RequestMethod.POST)
+	@RequestMapping(value = "/single_post.htm" ,method = RequestMethod.POST)
 	public void single(HttpServletRequest request,Model model,Contact con){
 		log.info("提交联系方式="+con);
 		//如果有文章id,则修改.

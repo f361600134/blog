@@ -109,8 +109,8 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 				<div class="page-title clearfix">
 
 					<div class="pagination">
-						<a href="single-post.htm?bid=${blog.bid}&oper=previous" class="prev-project">Previous Post</a><!--/ .prev-project-->
-						<a href="single-post.htm?bid=${blog.bid}&oper=next" class="next-project">Next Post</a><!--/ .next-project-->
+						<a href="single_post.htm?bid=${blog.bid}&oper=previous" class="prev-project">Previous Post</a><!--/ .prev-project-->
+						<a href="single_post.htm?bid=${blog.bid}&oper=next" class="next-project">Next Post</a><!--/ .next-project-->
 					</div><!--/ .pagination-->
 				</div><!--/ .page-title-->
 				
