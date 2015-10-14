@@ -12,14 +12,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h2 class="content-title noborder">Contact Info</h2>
 				<div class="contact-block">
 					<p>
-						<span>The Company Name Inc.</span>
-						8901 Marmora Road, <br />
-						Glasgow, D04 89GR.
+						<span><a href="http://www.79643.com" target="_blank">Janlr Network Technology Co.</a></span>
+						Room 2801, No. 197, <br />
+						North of Guangzhou Avenue.
 					</p>
 					<ul class="contact-list">
 						<li class="contact-phone">361600134</li>
 						<li class="contact-mail">
-							<a href="mailto:361600134@qq.com">361600134@qq.com</a>
+							<a href="mailto:fengsc@79643.com">fengsc@79643.com</a>
 						</li>
 						<!-- <li class="contact-skype">skype.name</li> -->
 					</ul><!--/ .contact-list-->

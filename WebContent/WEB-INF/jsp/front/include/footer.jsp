@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div  class="one-half last">
 				<ul data-description="Stay in touch via social networks:" class="social-links clearfix">
 						<li data-tooltip="WeChat:huuzii" class="wechat" id="">
-							<a href="https://twitter.com/nicc_fsc" target="_blank">WeChat</a>
+							<a href="#">WeChat</a>
 						</li>
 						<li data-tooltip="Sina" class="sina" id="">
 							<a href="http://weibo.com/2308412664" target="_blank">Sina</a>
