@@ -80,18 +80,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="one-fourth">
 				<div class="widget-flickr">
-					<h1>From Flickr</h1>
-					<ul id="flickr-badge" class="clearfix"></ul>
+					<h1>From Sina</h1>
+					<ul id="flickr-badge" class="clearfix">
+						对于一个不玩儿弱关系型社交工具的人来说,这个接口留着真心不知道是干嘛滴<img src="<%=basePath%>/images/icons/xk.png">
+					</ul>
 				</div><!--/ .widget-flickr-->
 			</div><!--/ .one-fourth-->
 			
 			
 			<div class="one-fourth last">
 				<div id="signup">
-					<h1>Join to Our Newsletter</h1>
+					<h1>Join to My Newsletter</h1>
 					<form method="post" action="/" id="signup_form">
 						<fieldset>
-							<label for="s-email">Ut pharetra augue nec augue. Nam elit agna, endrerit sit amet.</label>
+							<label for="s-email">这里提供了一个友情链接,邮件联系的接口,虽然我功能没有实现<img src="<%=basePath%>/images/icons/xk.png">.</label>
 							<input type="text" placeholder="Enter your email address" name="s-email" id="s-email"/>
 							<input type="submit" name="signup_submit" id="signup_submit" value="Submit" />
 						</fieldset>
