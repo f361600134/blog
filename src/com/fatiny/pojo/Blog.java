@@ -47,14 +47,6 @@ public class Blog implements Serializable,Cloneable{
 	private List<Tag> tags;	//标签集合
 	private List<String> medias;//无需入库,前端使用
 	
-	//一些静态标识符
-	public static HashMap<String, Integer> mediaMap = new HashMap<String, Integer>(); //map
-	static{
-		mediaMap.put("video", 1);
-		mediaMap.put("audio", 2);
-		mediaMap.put("img", 3);
-	}
-
 	@Id
 	@GeneratedValue
 	@Column(name="blogid")
