@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 编辑器源码文件 -->
     <script type="text/javascript" src="../ueditor/ueditor.all.min.js"></script>
     <script type="text/javascript" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
+    <link rel=stylesheet href="../ueditor/themes/default/css/ueditor.css">
   	
   	<script type="text/javascript">
 		function addTag(name){

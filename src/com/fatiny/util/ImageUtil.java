@@ -203,7 +203,8 @@ public class ImageUtil {
 			// 保存新图片
 			ImageIO.write(bi, ext, new File(result));
 			//显示需要相对路径
-            result = "/"+ result.replaceFirst(SystemConfig.REAL_PATH, "");
+            result = "\\"+ result.replace(SystemConfig.REAL_PATH, "");
+            result = result.replace("\\", "/");
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();

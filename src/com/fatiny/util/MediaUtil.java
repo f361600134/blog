@@ -25,7 +25,7 @@ public class MediaUtil {
 	
 	private static String TAG_VEDIO = "<video id=\"home_video\" class=\"entry-video video-js vjs-default-skin\"  data-aspect-ratio='2.41' data-setup=\"{}\" controls> <source src='?' type='video/mp4' ></source></video>";
 	private static String TAG_AUDIO = "<audio class=\"entry-audio AudioPlayerV1\"  controls=\"controls\"><source src='?' type=\"audio/mpeg\"></source></audio>";
-	private static String TAG_IMAGE = "<a class=\"single-image picture-icon\" href=\"?\"><img class=\"entry-image\" src=\"?\" alt=\"\"></img></a>";
+	private static String TAG_IMAGE = "<a class=\"single-image picture-icon\" href=\"?\" rel=\"postgroup\"><img class=\"entry-image\" src=\"?\" alt=\"\"></img></a>";
 	private static String TAG_IMAGES_LI="<li>?</li>";
 	private static String TAG_IMAGES = "<div class=\"image-gallery-slider\"><ul>?</ul></div>";
 	

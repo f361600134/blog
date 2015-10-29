@@ -105,6 +105,13 @@ public class UtilTools {
 		return sql;
 	}
 	
+	public static void main(String[] args) {
+		String txt = "D:/Program Files/Java/Tomcat3264/webapps/wtpwebapps/blog/uploads/image/blog/201510/sm_1445486119274-image1.png";
+		txt = txt.replaceFirst("D:/Program Files/Java/Tomcat3264/webapps/wtpwebapps/","");
+		System.out.println(txt);
+	}
+	
+	
 	/**
 	 * @param txt
 	 * @param objs
