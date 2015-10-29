@@ -40,19 +40,6 @@ public class ImageUtil {
     public static String IMAGE_TYPE_BMP = "bmp";// 英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式
     public static String IMAGE_TYPE_PNG = "png";// 可移植网络图形
     public static String IMAGE_TYPE_PSD = "psd";// Photoshop的专用格式Photoshop
-
-    /**
-     * 程序入口：用于测试
-     * 可以考虑等比缩放到700之后,然后裁剪.这样可以最大满足需求.但是不知道图片会不会失真.试试
-     * @param args
-     */
-    public static void main(String[] args) {
-    	String source = "/Users/Jeremy/Desktop/1.jpg";
-    	String target = "/Users/Jeremy/Desktop/6.jpg";
-    	cutPic(source, 0, 0, 700, 280);
-    	// 方法二：按高度和宽度缩放
-        //ImageUtil.scale(source, 0, 400, true);//测试OK
-    }
     
     /**
      * 要把旧的地址改成新的地址.并且还不能用绝对路径,改成相对路径
@@ -75,7 +62,7 @@ public class ImageUtil {
     	File file;
     	try {
 	    	for (String src : srcImageFile) {
-	    		file = new File(Config.REAL_PATH + src);
+	    		file = new File(SystemConfig.REAL_PATH + src);
 	    		//图片太小,直接忽略
     			bi = ImageIO.read(file);
     			if (bi.getWidth() > 650 && bi.getHeight() > 250) 
@@ -100,7 +87,7 @@ public class ImageUtil {
     	File file;
     	try {
 	    	for (String src : srcImageFile) {
-	    		file = new File(Config.REAL_PATH + src);
+	    		file = new File(SystemConfig.REAL_PATH + src);
 	    		//图片太小,直接忽略
     			bi = ImageIO.read(file);
     			if (bi.getWidth() > 650 && bi.getHeight() > 250) 
@@ -137,7 +124,7 @@ public class ImageUtil {
     	String result = srcImageFile;
         try {
             // 读取源图像
-        	File file = new File(Config.REAL_PATH + srcImageFile);
+        	File file = new File(SystemConfig.REAL_PATH + srcImageFile);
 			result = getSmallImagePath(file);
             BufferedImage bi = ImageIO.read(file);
             
@@ -159,7 +146,7 @@ public class ImageUtil {
                 //保存使用绝对路径
                 ImageIO.write(tag, IMAGE_TYPE_PNG, new File(result));
                 //显示需要相对路径
-                result = "/"+ result.replaceFirst(Config.REAL_PATH, "");
+                result = "/"+ result.replaceFirst(SystemConfig.REAL_PATH, "");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -183,7 +170,7 @@ public class ImageUtil {
 		String result = "";
 		try {
 			 // 读取源图像
-        	File file = new File(Config.REAL_PATH + srcImageFile);
+        	File file = new File(SystemConfig.REAL_PATH + srcImageFile);
         	result = getSmallImagePath(file);
 			// 如果源图片不存在
         	/*if (!new File(srcImageFile).exists()) {
@@ -216,7 +203,7 @@ public class ImageUtil {
 			// 保存新图片
 			ImageIO.write(bi, ext, new File(result));
 			//显示需要相对路径
-            result = "/"+ result.replaceFirst(Config.REAL_PATH, "");
+            result = "/"+ result.replaceFirst(SystemConfig.REAL_PATH, "");
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -247,7 +234,7 @@ public class ImageUtil {
     public static String scale(String srcImageFile, int width, int height, boolean bb) {
         try {
             double ratio = 0.0; // 缩放比例
-            File f = new File(Config.REAL_PATH + srcImageFile);
+            File f = new File(SystemConfig.REAL_PATH + srcImageFile);
             String result = getSmallImagePath(f);
             BufferedImage bi = ImageIO.read(f);
             
@@ -281,7 +268,7 @@ public class ImageUtil {
             //保存使用绝对路径
             ImageIO.write((BufferedImage) itemp, IMAGE_TYPE_PNG, new File(result));
             //显示需要相对路径
-            result = "/"+ result.replaceFirst(Config.REAL_PATH, "");
+            result = "/"+ result.replaceFirst(SystemConfig.REAL_PATH, "");
             return result;
         } catch (IOException e) {
             e.printStackTrace();	

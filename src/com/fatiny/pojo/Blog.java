@@ -39,7 +39,7 @@ public class Blog implements Serializable,Cloneable{
 	private Date postDate;		//发表日期
 	private String showDate;	//显示日期(为了不让发表日期在显示的时候频繁转换)
 	private int cateId;			//文章类型
-	private String media;		//多媒体(图片,视频,音乐路径用","隔开
+	private String media;		//多媒体
 	private int viewTimes;		//阅读次数
 	
 	//不做入库处理的数据

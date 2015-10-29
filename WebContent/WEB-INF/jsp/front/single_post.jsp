@@ -109,8 +109,8 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 				<div class="page-title clearfix">
 
 					<div class="pagination">
-						<a href="single-post.htm?bid=${blog.bid}&oper=previous" class="prev-project">Previous Post</a><!--/ .prev-project-->
-						<a href="single-post.htm?bid=${blog.bid}&oper=next" class="next-project">Next Post</a><!--/ .next-project-->
+						<a href="single_post.htm?bid=${blog.bid}&oper=previous" class="prev-project">Previous Post</a><!--/ .prev-project-->
+						<a href="single_post.htm?bid=${blog.bid}&oper=next" class="next-project">Next Post</a><!--/ .next-project-->
 					</div><!--/ .pagination-->
 				</div><!--/ .page-title-->
 				
@@ -268,18 +268,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 					
 				</div><!--/ .widget-->
 
-				<div class="widget">
-					<h1 class="content-title">Recent Comments</h1>
-					<ul class="recent-comments">
-						<li><a href="#" class="author">Sam</a>&nbsp;<small>on</small>&nbsp;<a href="#">Aenean auctor wisi et urna</a></li>
-						<li><a href="#" class="author">Alice</a>&nbsp;<small>on</small>&nbsp;<a href="#">Vestibulum ante ipsum primis in</a></li>
-						<li><a href="#" class="author">Admin</a>&nbsp;<small>on</small>&nbsp;<a href="#">Donec sagittis euismod purus</a></li>
-						<li><a href="#" class="author">John</a>&nbsp;<small>on</small>&nbsp;<a href="#">Sed ut perspiciatis sit</a></li>
-						<li><a href="#" class="author">Linda</a>&nbsp;<small>on</small>&nbsp;<a href="#">Neque porro quisquam</a></li>
-					</ul><!--/ .recent-comments-->
-				</div><!--/ .widget-->
-				
-				
 				<div class="widget">
 					
 					<h1 class="widget-title">Archives</h1>

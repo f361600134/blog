@@ -32,11 +32,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 					<div class="image-title clearfix">
 						<a href="<%=myPath%>single_post.htm?bid=${blog.bid}">
 							<h2>
-<%-- 								<c:choose><c:when test="${blog.postType == 1}"><span class="post-type video"></span><!-- audio --></c:when> --%>
-<%-- 								   <c:when test="${blog.postType == 2}"><span class="post-type audio"></span><!-- audio --></c:when> --%>
-<%-- 								   <c:when test="${blog.postType == 3}"><span class="post-type picture"></span><!-- image --></c:when> --%>
-<%-- 								   <c:otherwise><span class="post-type list"></span><!-- list --></c:otherwise> --%>
-<%-- 								</c:choose> --%>
 								<span class="post-type list"></span>
 								${blog.title }
 							</h2>

@@ -3,7 +3,7 @@ package com.fatiny.listener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.fatiny.util.Config;
+import com.fatiny.util.SystemConfig;
 
 public class InitContextListener implements ServletContextListener{
 
@@ -20,7 +20,7 @@ public class InitContextListener implements ServletContextListener{
 		String rootPath = arg.getServletContext().getRealPath("/");
 		String context = arg.getServletContext().getContextPath();
 		
-		Config.initPath(rootPath, context);
+		SystemConfig.initPath(rootPath, context);
 	}
 
 }

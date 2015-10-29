@@ -53,15 +53,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 			<div class="one-half">
 				<ul class="contact-info clearfix">
-					<li class="phone">+132 **** 8641</li>
+					<li class="phone">361600134</li>
 					<li class="email"><a href="mailto:361600134@qq.com">361600134@qq.com</a></li>
 				</ul><!--/ .contact-info-->	
 			</div><!--/ .one-half-->
 			
 			<div  class="one-half last">
 				<ul data-description="Stay in touch via social networks:" class="social-links clearfix">
-						<li data-tooltip="WeChat" class="wechat" id="">
-							<a href="https://twitter.com/nicc_fsc" target="_blank">WeChat</a>
+						<li data-tooltip="WeChat:huuzii" class="wechat" id="">
+							<a href="#">WeChat</a>
 						</li>
 						<li data-tooltip="Sina" class="sina" id="">
 							<a href="http://weibo.com/2308412664" target="_blank">Sina</a>
@@ -72,7 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li data-tooltip="Twitter" class="twitter" id="">
 							<a href="https://twitter.com/nicc_fsc" target="_blank">Twitter</a>
 						</li>
-						
 				</ul><!-- / .social-links	-->
  			</div><!-- / .one-fourth.last -->
  			
@@ -97,8 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<header id="header" class="clearfix">
 			
 			<div id="logo">
-				<h1><a href="<%=basePath %>front/index.htm"><!-- ${logo.title } -->Fatiny</a></h1>
-				<div class="slogan"><span><!--${logo.slogan }-->My Personal Blog</span></div><!--/ .slogan-->
+				<h1><a href="<%=basePath %>front/index.htm">${logo.title }</a></h1>
+				<div class="slogan"><span>${logo.slogan }</span></div><!--/ .slogan-->
 			</div><!--/ #logo-->
 			
 			<nav id="navigation" class="navigation">

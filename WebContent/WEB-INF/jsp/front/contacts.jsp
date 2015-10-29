@@ -12,22 +12,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h2 class="content-title noborder">Contact Info</h2>
 				<div class="contact-block">
 					<p>
-						<span>The Company Name Inc.</span>
-						8901 Marmora Road, <br />
-						Glasgow, D04 89GR.
+						<span><a href="http://www.79643.com" target="_blank">Janlr Network Technology Co.</a></span>
+						Room 2801, No. 197, <br />
+						North of Guangzhou Avenue.
 					</p>
 					<ul class="contact-list">
-						<li class="contact-phone">+132 4913 8641</li>
+						<li class="contact-phone">361600134</li>
 						<li class="contact-mail">
-							<a href="mailto:361600134@qq.com">361600134@qq.com</a>
+							<a href="mailto:fengsc@79643.com">fengsc@79643.com</a>
 						</li>
-						<li class="contact-skype">skype.name</li>
+						<!-- <li class="contact-skype">skype.name</li> -->
 					</ul><!--/ .contact-list-->
 				</div><!--/ .contact-block-->
 			</div><!--/ .one-fourth-->
 			<div class="three-fourth last">
 				<h2 class="content-title">Drop Me a Line</h2>
-				<p>要登录才能发表留言哦,精彩留言会显示在网站首页哦~</p>
+				<!-- <p></p> -->
 				<form action="" class="contacts-form" id="contacts-form" method="post">
 					<fieldset>
 						<label class="input-block"><input type="text" name="name" value="" placeholder="Name (required)"></label>

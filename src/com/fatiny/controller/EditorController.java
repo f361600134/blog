@@ -1,6 +1,7 @@
 package com.fatiny.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -119,18 +120,29 @@ public class EditorController {
 			blog.setCateId(Integer.valueOf(cate));
 		
 		this.blogservice.saveOrUpdate(blog);
-		//用于实现标签入库
-		List<Tag> bts = this.tagService.getAll();
-		List<Integer> list = new ArrayList<Integer>();
-		String [] tags = key.split(",");
-		for (String tag : tags) {
-			int tid = find(bts,tag);
-			if (tid != 0)list.add(tid);
-		}
-		//实现取三个标签入库
-		if (list.size()>3) list.subList(0, 3);
-		for (Integer tid : list) {
-			this.btService.saveOrUpdate(new BlogTag(tid, blog.getBid()));
+		//保存新的标签
+		if (!StringUtil.isBlank(key)) {
+			//首先添加到tag表
+			List<Tag> bts = this.tagService.getAll();
+			String [] tags = key.split(",");
+			//截取数组
+			tags = Arrays.copyOfRange(tags, 0, 3);
+			for (String tag : tags) {
+				int tid = find(bts,tag);
+				if (tid == 0) {
+					this.tagService.saveOrUpdate(new Tag(tag));
+				}
+			}
+			List<Integer> list = new ArrayList<Integer>();
+			bts = this.tagService.getAll();
+			System.out.println("bts:"+bts+",tags:"+tags);
+			for (String tag : tags) {
+				int tid = find(bts,tag);
+				list.add(tid);
+			}
+			for (Integer tid : list) {
+				this.btService.saveOrUpdate(new BlogTag(tid, blog.getBid()));
+			}
 		}
 		
 		model.addAttribute("content",blog.getContent());

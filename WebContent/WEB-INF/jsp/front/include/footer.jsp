@@ -23,8 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- Login <div class="mybox"></div>-->
 			<div  class="one-half last">
 				<ul data-description="Stay in touch via social networks:" class="social-links clearfix">
-						<li data-tooltip="WeChat" class="wechat" id="">
-							<a href="https://twitter.com/nicc_fsc" target="_blank">WeChat</a>
+						<li data-tooltip="WeChat:huuzii" class="wechat" id="">
+							<a href="#">WeChat</a>
 						</li>
 						<li data-tooltip="Sina" class="sina" id="">
 							<a href="http://weibo.com/2308412664" target="_blank">Sina</a>
@@ -66,7 +66,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="widget-text">
 					<h1>About Me</h1>
 					<p>
-						关于我该怎么写呢?幽默阳光帅气?还没想好怎么办?啊啊啊啊,要疯了! 
+						我是程序猿黑咔嚓
+					</p>
+					<p>
+						Java开启了我的程序之路。 现在正在修行Jbjective-C。<br>
 					</p>
 					<p>
 						先就这样吧,哈哈!
@@ -77,18 +80,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="one-fourth">
 				<div class="widget-flickr">
-					<h1>From Flickr</h1>
-					<ul id="flickr-badge" class="clearfix"></ul>
+					<h1>From Sina</h1>
+					<ul id="flickr-badge" class="clearfix">
+						对于一个不玩儿弱关系型社交工具的人来说,这个接口留着真心不知道是干嘛滴<img src="<%=basePath%>/images/icons/xk.png">
+					</ul>
 				</div><!--/ .widget-flickr-->
 			</div><!--/ .one-fourth-->
 			
 			
 			<div class="one-fourth last">
 				<div id="signup">
-					<h1>Join to Our Newsletter</h1>
+					<h1>Join to My Newsletter</h1>
 					<form method="post" action="/" id="signup_form">
 						<fieldset>
-							<label for="s-email">Ut pharetra augue nec augue. Nam elit agna, endrerit sit amet.</label>
+							<label for="s-email">这里提供了一个友情链接,邮件联系的接口,虽然我功能没有实现<img src="<%=basePath%>/images/icons/xk.png">.</label>
 							<input type="text" placeholder="Enter your email address" name="s-email" id="s-email"/>
 							<input type="submit" name="signup_submit" id="signup_submit" value="Submit" />
 						</fieldset>

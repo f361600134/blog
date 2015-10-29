@@ -110,7 +110,6 @@ public class UtilTools {
 	 * @param objs
 	 * @return
 	 */
-	@Deprecated
 	public static String formatForBlog(String txt,String tag){
 		if (tag == null || tag.length() == 0) {
 			return txt;
