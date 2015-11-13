@@ -175,7 +175,7 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 				<section id="respond">
 					<h3 class="content-title">Leave a Comment</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod  aliqua.</p>
-					<form method="post" id="comments-form" class="comments-form" action="single-post.htm"><!-- action="single-post.htm?bid=${blog.bid}&cid=0 "-->
+					<form method="post" id="comments-form" class="comments-form" action="single_post.htm"><!-- action="single-post.htm?bid=${blog.bid}&cid=0 "-->
 						<input type="hidden" id="bid" name="bid" value="${blog.bid}"> 
 						<input type="hidden" id="cid" name="cid" value="0"> 
 						<fieldset class="input-fieldset">
