@@ -27,29 +27,30 @@ public class CommonInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
+		
 		//get ip
 //		String host = request.getRemoteHost();
 //		int post = request.getRemotePort();
 //		String addr = request.getRemoteAddr();
 //		String user = request.getRemoteUser();
-		
+//		System.out.printf("host=%s,post=%d,addr=%s,user=%s", host, post, addr, user);
 //		System.out.println(request.getMethod()); //get post
-		
-//		System.out.printf("host=%s,post=%d,addr=%s,user=%s", host,post,addr,user);
 		//end
-		
-//        String url = request.getServletPath();
-//        log.info("url==="+url);
-//        //先对url进行判断,是登录路径直接使其通过
-//        if (url.equals("/user/login.htm") || url.equals("/editor/ckeditor.htm")|| url.equals("/editor/ueeditor.htm")
-//        		|| url.equals("/index/index.htm")) return true;
-//        
-//		String str = (String) request.getSession().getAttribute("loginUser");
-//        if(str==null ){
-//        	//绝对路径
-//        	response.sendRedirect(request.getContextPath()+"/user/login.htm");
-//			return false;
-//        }
+		String url = request.getServletPath();
+//		log.info("url==="+url);
+        
+        //先对url进行判断,是登录路径直接使其通过
+//		if (url.equals("/admin/login.htm") || url.equals("/editor/ckeditor.htm")|| url.equals("/editor/ueeditor.htm")
+//			|| url.equals("/index/index.htm")) return true;
+        
+        if (url.equals("/admin/login.htm"))	return true;
+        
+		String str = (String) request.getSession().getAttribute("loginUser");
+        if(str==null ){
+        	//绝对路径
+        	response.sendRedirect(request.getContextPath()+"/admin/login.htm");
+			return false;
+        }
 		return true;
 	}
 
