@@ -22,7 +22,6 @@ import com.fatiny.service.BlogService;
 import com.fatiny.service.CategorieService;
 import com.fatiny.service.ContactService;
 import com.fatiny.service.LogoService;
-import com.fatiny.service.ProjectService;
 import com.fatiny.service.TagService;
 import com.fatiny.util.Content;
 import com.fatiny.util.DateUtil;

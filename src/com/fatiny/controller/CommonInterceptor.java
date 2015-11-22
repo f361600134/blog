@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.fatiny.util.LogContext;
 
 public class CommonInterceptor implements HandlerInterceptor {
@@ -27,14 +26,53 @@ public class CommonInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		
+//		getRequestURL方法返回客户端发出请求时的完整URL。
+//	　　	getRequestURI方法返回请求行中的资源名部分。
+//	　　	getQueryString 方法返回请求行中的参数部分。
+//	　　	getPathInfo方法返回请求URL中的额外路径信息。额外路径信息是请求URL中的位于Servlet的路径之后和查询参数之前的内容，它以“/”开头。
+//	　　	getRemoteAddr方法返回发出请求的客户机的IP地址。
+//	　　	getRemoteHost方法返回发出请求的客户机的完整主机名。
+//	　　	getRemotePort方法返回客户机所使用的网络端口号。
+//	　　	getLocalAddr方法返回WEB服务器的IP地址。
+//	　　	getLocalName方法返回WEB服务器的主机名。
 		//get ip
-//		String host = request.getRemoteHost();
-//		int post = request.getRemotePort();
-//		String addr = request.getRemoteAddr();
-//		String user = request.getRemoteUser();
-//		System.out.printf("host=%s,post=%d,addr=%s,user=%s", host, post, addr, user);
-//		System.out.println(request.getMethod()); //get post
+		String host = request.getRemoteHost();
+		int post = request.getRemotePort();
+		String addr = request.getRemoteAddr();
+		String user = request.getRemoteUser();
+		System.out.printf("host=%s,post=%d,addr=%s,user=%s", host, post, addr, user);
+		System.out.println();
+		
+		String uri = request.getRequestURI();
+		String localAddr = request.getLocalAddr();
+		String localName = request.getLocalName();
+		int localPort = request.getLocalPort();
+		String method = request.getMethod();
+		System.out.printf("uri=%s,localAddr=%s,localName=%s,localPort=%d, method=%s", uri, localAddr, localName, localPort, method);
+		System.out.println();
+		
+		int ctn = request.getContentLength();
+		String ctnPath = request.getContextPath();
+		String ctnType = request.getContentType();
+		System.out.printf("ctn:%d,ctnPath:%s,ctnType:%s", ctn, ctnPath, ctnType);
+		System.out.println();
+//		request.getCookies();
+//		request.getDispatcherType();
+//		request.getInputStream();
+//		request.getUserPrincipal();
+//		request.getHeaderNames();
+//		request.getSession();
+//		request.getServletContext();
+//		request.getAsyncContext();
+//		request.getAttributeNames();
+		
+		String servletPath = request.getServletPath();
+		int serverPort = request.getServerPort();
+		String serverName = request.getServerName();
+		String requestUri = request.getRequestURI();
+		String scheme = request.getScheme();
+		System.out.printf("servletPath:%s, serverPort:%d, serverName:%s,serverUri:%s, scheme:%s", servletPath,serverPort,serverName,requestUri,scheme );
+		System.out.println();
 		//end
 		String url = request.getServletPath();
 //		log.info("url==="+url);
@@ -43,10 +81,10 @@ public class CommonInterceptor implements HandlerInterceptor {
 //		if (url.equals("/admin/login.htm") || url.equals("/editor/ckeditor.htm")|| url.equals("/editor/ueeditor.htm")
 //			|| url.equals("/index/index.htm")) return true;
         
-        if (url.equals("/admin/login.htm"))	return true;
+        if (url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))	return true;
         
 		String str = (String) request.getSession().getAttribute("loginUser");
-        if(str==null ){
+        if(str==null){
         	//绝对路径
         	response.sendRedirect(request.getContextPath()+"/admin/login.htm");
 			return false;

@@ -49,6 +49,7 @@ public class ContactDaoImpl extends BaseDao implements ContactDao{
 		return super.getCount(hql);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Contact> findByLimitMax(String hql, int max) {
 		return (List<Contact>)super.findByLimitMax(hql,max);
