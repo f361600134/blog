@@ -79,7 +79,6 @@ public class CommonInterceptor implements HandlerInterceptor {
 		//end
 		String url = request.getServletPath();
 //		log.info("url==="+url);
-        
         //先对url进行判断,是登录路径直接使其通过
 //		if (url.equals("/admin/login.htm") || url.equals("/editor/ckeditor.htm")|| url.equals("/editor/ueeditor.htm")
 //			|| url.equals("/index/index.htm")) return true;
