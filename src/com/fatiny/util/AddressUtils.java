@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import javax.servlet.http.HttpServletRequest;
 /**
  *  根据IP地址获取详细的地域信息
  *  @project:personGocheck

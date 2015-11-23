@@ -35,9 +35,8 @@ public class Visitor implements Serializable{
 		super();
 	}
 
-	public Visitor(int id, String ip, String address, int port, int times, String device) {
+	public Visitor(String ip, String address, int port, int times, String device) {
 		super();
-		this.id = id;
 		this.ip = ip;
 		this.address = address;
 		this.port = port;

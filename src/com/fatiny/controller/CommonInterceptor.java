@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fatiny.pojo.Visitor;
 import com.fatiny.util.LogContext;
+import com.fatiny.vo.CommonData;
 
 public class CommonInterceptor implements HandlerInterceptor {
 	private static Logger log = LogContext.LOG_MODULE_INTERCEPTER;
@@ -81,8 +84,9 @@ public class CommonInterceptor implements HandlerInterceptor {
 //		if (url.equals("/admin/login.htm") || url.equals("/editor/ckeditor.htm")|| url.equals("/editor/ueeditor.htm")
 //			|| url.equals("/index/index.htm")) return true;
         
+		CommonData.ipSet.add(addr);
+		
         if (url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))	return true;
-        
 		String str = (String) request.getSession().getAttribute("loginUser");
         if(str==null){
         	//绝对路径
