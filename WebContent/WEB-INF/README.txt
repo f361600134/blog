@@ -5,3 +5,19 @@
 2. Timer
 	2.1>增加计时器.用于处理1小时一次的IP地址入库请求.
 	2.2>queue使用这个计时器.要与Spring配合使用
+	
+3. Executor
+	2.1>集成Spring线程池配置.
+	<!-- 线程池配置,没有用上 -->
+    <bean id="taskExecutor" 
+    class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+    		<!-- 核心线程数 -->
+            <property name="corePoolSize" value="2" />
+            <!-- 最大线程数 -->
+            <property name="maxPoolSize" value="5" />
+            <!-- 队列大小 -->
+            <property name="queueCapacity" value="6" /> 
+            <!-- 线程池维护线程所允许的空闲时间,超过这个时间后会将大于corePoolSize的线程关闭, 默认为60s -->
+        	<property name="keepAliveSeconds" value="300" />
+    </bean>
+	
