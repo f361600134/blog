@@ -27,6 +27,7 @@ public class Visitor implements Serializable{
 	private int id;				//唯一id
 	private String ip;			//用户的IP地址
 	private String address;		//解析IP地址获取的地理
+	
 	private int port;			//端口号
 	private int times;			//访问次数
 	private String device;		//机型,待定使用
@@ -35,6 +36,12 @@ public class Visitor implements Serializable{
 		super();
 	}
 
+	public Visitor(String ip, String address) {
+		super();
+		this.ip = ip;
+		this.address = address;
+	}
+	
 	public Visitor(String ip, String address, int port, int times, String device) {
 		super();
 		this.ip = ip;
@@ -70,7 +77,7 @@ public class Visitor implements Serializable{
 		this.address = address;
 	}
 	
-	@Column(name="port")
+	//@Column(name="port")
 	public int getPort() {
 		return port;
 	}
@@ -78,7 +85,7 @@ public class Visitor implements Serializable{
 		this.port = port;
 	}
 	
-	@Column(name="times")
+	//@Column(name="times")
 	public int getTimes() {
 		return times;
 	}
@@ -86,7 +93,7 @@ public class Visitor implements Serializable{
 		this.times = times;
 	}
 	
-	@Column(name="device")
+	//@Column(name="device")
 	public String getDevice() {
 		return device;
 	}

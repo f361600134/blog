@@ -17,6 +17,13 @@ import com.fatiny.pojo.JqGrid;
 import com.fatiny.util.LogContext;
 import com.fatiny.util.UtilTools;
 
+/**
+ * @Description
+ * @bug 这个类有bug, 直接调用的Dao, 没有经过service.要修改 
+ * @author Jeremy
+ * @date 2015年12月3日 下午9:55:39 
+ * @version V1.0
+ */
 @Controller
 @RequestMapping("/category")
 public class CategoryController {

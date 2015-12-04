@@ -212,7 +212,8 @@ public class AddressUtils {
 				if (region != null && !region.isEmpty())
 					result += region + ", ";
 				if (contry != null && !contry.isEmpty())
-					result += contry + ", ";
+					result += contry;
+				
 				return result;
 			}
 		} catch (Exception e) {
