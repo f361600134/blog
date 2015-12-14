@@ -2,7 +2,6 @@ package com.fatiny.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

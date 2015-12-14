@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fatiny.pojo.Visitor;
 import com.fatiny.util.LogContext;
 import com.fatiny.vo.CommonData;
 

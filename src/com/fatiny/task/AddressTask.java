@@ -29,16 +29,16 @@ public class AddressTask {
 
 	public void run(){
 		Iterator<String> iter = CommonData.ipSet.iterator();
-		if(!CommonData.ipSet.isEmpty()){
-			System.out.println("Not null, size:"+CommonData.ipSet.size());
-		}else{
-			System.out.println("Null");
-		}
+//		if(!CommonData.ipSet.isEmpty()){
+//			System.out.println("Not null, size:"+CommonData.ipSet.size());
+//		}else{
+//			System.out.println("Null");
+//		}
 		if(iter.hasNext()){
 			String ip = iter.next();
 			iter.remove();
 			String address = AddressUtils.getGeoAddress(ip);
-			System.out.println("address:"+address);
+//			System.out.println("address:"+address);
 			//解析保存访问者信息
 			Visitor visitor = new Visitor(ip, address);
 			visitorService.saveOrUpdate(visitor);

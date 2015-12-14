@@ -197,7 +197,7 @@ public class AddressUtils {
 
 	public static String getGeoAddress(String ip){
 		try {
-			File dbfile = new File("/Users/Jeremy/javaspace/resource/GeoLiteCity.dat");
+			File dbfile = new File("D:/GeoLiteCity.dat");
 			LookupService lookupService = new LookupService(dbfile, LookupService.GEOIP_MEMORY_CACHE);
 			Location location = lookupService.getLocation(ip);
 			// Populate region. Note that regionName is a MaxMind class, not an instance variable
