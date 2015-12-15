@@ -63,6 +63,9 @@
 	        <ref bean="jobDetail" />
 	    </property>
 	    <property name="cronExpression">
+	    	<!-- 每天晚上11点执行一次 -->
+	    	<!-- <value>0 0 23 * * ?</value> -->
+	    	<!-- 10秒运行一次 -->
 	        <value>0/10 * * * * ?</value>
 	    </property>
 	</bean>

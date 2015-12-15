@@ -22,6 +22,8 @@ import com.maxmind.geoip.regionName;
  */
 public class AddressUtils {
 	
+	private static final String localhost = "localhost";
+	private static final String localip = "192.168.1.";
 	private static final String errorResult = "无效IP或未解析成功";
 	
 	/** 获取IP */
@@ -196,6 +198,11 @@ public class AddressUtils {
 	}
 
 	public static String getGeoAddress(String ip){
+		//本地
+		if (ip.contains(localip)) {
+			return localhost;
+		}
+		//如果是非本地地址的IP
 		try {
 			File dbfile = new File("D:/GeoLiteCity.dat");
 			LookupService lookupService = new LookupService(dbfile, LookupService.GEOIP_MEMORY_CACHE);
@@ -213,7 +220,6 @@ public class AddressUtils {
 					result += region + ", ";
 				if (contry != null && !contry.isEmpty())
 					result += contry;
-				
 				return result;
 			}
 		} catch (Exception e) {
@@ -228,8 +234,8 @@ public class AddressUtils {
 		// 测试ip 219.136.134.157 中国=华南=广东省=广州市=越秀区=电信
 		// 测试ip 125.70.11.136 中国=西南=四川省=成都市==电信
 		//String ip = "218.192.3.42";
-		String ip="112.74.85.106";	//广东深圳
-		ip = "103.9.116.204";	//台湾省
+		//String ip="112.74.85.106";	//广东深圳
+		//ip = "103.9.116.204";	//台湾省
 		//ip = "119.81.157.66";	//HK
 		//ip = "5.39.51.137";		//FR
 		//ip = "24.143.198.188";	//US

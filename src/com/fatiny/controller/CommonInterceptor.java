@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fatiny.pojo.Visitor;
+import com.fatiny.util.AddressUtils;
 import com.fatiny.util.LogContext;
 import com.fatiny.vo.CommonData;
 
@@ -38,26 +40,26 @@ public class CommonInterceptor implements HandlerInterceptor {
 //	　　	getLocalAddr方法返回WEB服务器的IP地址。
 //	　　	getLocalName方法返回WEB服务器的主机名。
 		//get ip
-		String host = request.getRemoteHost();
-		int post = request.getRemotePort();
-		String addr = request.getRemoteAddr();
-		String user = request.getRemoteUser();
-		System.out.printf("host=%s,post=%d,addr=%s,user=%s", host, post, addr, user);
-		System.out.println();
+//		String host = request.getRemoteHost();
+//		int post = request.getRemotePort();
+//		String addr = request.getRemoteAddr();
+//		String user = request.getRemoteUser();
+//		System.out.printf("host=%s,post=%d,addr=%s,user=%s", host, post, addr, user);
+//		System.out.println();
 		
-		String uri = request.getRequestURI();
-		String localAddr = request.getLocalAddr();
-		String localName = request.getLocalName();
-		int localPort = request.getLocalPort();
-		String method = request.getMethod();
-		System.out.printf("uri=%s,localAddr=%s,localName=%s,localPort=%d, method=%s", uri, localAddr, localName, localPort, method);
-		System.out.println();
+//		String uri = request.getRequestURI();
+//		String localAddr = request.getLocalAddr();
+//		String localName = request.getLocalName();
+//		int localPort = request.getLocalPort();
+//		String method = request.getMethod();
+//		System.out.printf("uri=%s,localAddr=%s,localName=%s,localPort=%d, method=%s", uri, localAddr, localName, localPort, method);
+//		System.out.println();
 		
-		int ctn = request.getContentLength();
+//		int ctn = request.getContentLength();
 		String ctnPath = request.getContextPath();
-		String ctnType = request.getContentType();
-		System.out.printf("ctn:%d,ctnPath:%s,ctnType:%s", ctn, ctnPath, ctnType);
-		System.out.println();
+//		String ctnType = request.getContentType();
+//		System.out.printf("ctn:%d,ctnPath:%s,ctnType:%s", ctn, ctnPath, ctnType);
+//		System.out.println();
 //		request.getCookies();
 //		request.getDispatcherType();
 //		request.getInputStream();
@@ -68,13 +70,13 @@ public class CommonInterceptor implements HandlerInterceptor {
 //		request.getAsyncContext();
 //		request.getAttributeNames();
 		
-		String servletPath = request.getServletPath();
-		int serverPort = request.getServerPort();
-		String serverName = request.getServerName();
-		String requestUri = request.getRequestURI();
-		String scheme = request.getScheme();
-		System.out.printf("servletPath:%s, serverPort:%d, serverName:%s,serverUri:%s, scheme:%s", servletPath,serverPort,serverName,requestUri,scheme );
-		System.out.println();
+//		String servletPath = request.getServletPath();
+//		int serverPort = request.getServerPort();
+//		String serverName = request.getServerName();
+//		String requestUri = request.getRequestURI();
+//		String scheme = request.getScheme();
+//		System.out.printf("servletPath:%s, serverPort:%d, serverName:%s,serverUri:%s, scheme:%s", servletPath,serverPort,serverName,requestUri,scheme );
+//		System.out.println();
 		//end
 		String url = request.getServletPath();
 //		log.info("url==="+url);
@@ -82,7 +84,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 //		if (url.equals("/admin/login.htm") || url.equals("/editor/ckeditor.htm")|| url.equals("/editor/ueeditor.htm")
 //			|| url.equals("/index/index.htm")) return true;
         
-		CommonData.ipSet.add(addr);
+		CommonData.ipSet.add(AddressUtils.getIp(request));
 		
         if (url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))	return true;
 		String str = (String) request.getSession().getAttribute("loginUser");
