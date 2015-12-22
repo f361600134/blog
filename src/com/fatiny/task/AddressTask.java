@@ -26,15 +26,15 @@ public class AddressTask {
 	}
 
 	public void run(){
-		Iterator<String> iter = CommonData.ipSet.iterator();
-		while(iter.hasNext()){
-			String ip = iter.next();
-			iter.remove();
-			String address = AddressUtils.getGeoAddress(ip);
+		//Iterator<String> iter = CommonData.ipSet.iterator();
+		//while(iter.hasNext()){
+			//String ip = iter.next();
+			//iter.remove();
+			//String address = AddressUtils.getGeoAddress(ip);
 			//System.out.println("ip:"+ip+", address:"+address);
 			//解析保存访问者信息
-			Visitor visitor = new Visitor(ip, address);
-			visitorService.saveOrUpdate(visitor);
-		}
+			//Visitor visitor = new Visitor(ip, address);
+			//visitorService.saveOrUpdate(visitor);
+		//}
 	}
 }

@@ -110,6 +110,11 @@ public class UserController {
 		return "/user/show";
 	}
 	
+	@RequestMapping(value = "/angel_000.htm" ,method = RequestMethod.GET)
+	public String angel_000(Model model){
+		System.out.println("=======");
+		return "/user/vindicate";
+	}
 	
 	@Deprecated
 	@RequestMapping(value="/login.htm",method = RequestMethod.POST)
