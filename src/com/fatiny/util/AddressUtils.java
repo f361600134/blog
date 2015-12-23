@@ -22,8 +22,9 @@ import com.maxmind.geoip.regionName;
  */
 public class AddressUtils {
 	
-	private static final String localhost = "localhost";
+	private static final String localhost = "Local or LAN";
 	private static final String localip = "192.168.1.";
+	private static final String localip2 = "0:0:0:0:0:0:0:1";
 	private static final String errorResult = "无效IP或未解析成功";
 	
 	/** 获取IP */
@@ -199,12 +200,12 @@ public class AddressUtils {
 
 	public static String getGeoAddress(String ip){
 		//本地
-		if (ip.contains(localip)) {
+		if (ip.contains(localip) || ip.contains(localip2)) {
 			return localhost;
 		}
 		//如果是非本地地址的IP
 		try {
-			File dbfile = new File("/Users/Jeremy/javaspace/resource/GeoLiteCity.dat");
+			File dbfile = new File("D://GeoLiteCity.dat");
 			LookupService lookupService = new LookupService(dbfile, LookupService.GEOIP_MEMORY_CACHE);
 			Location location = lookupService.getLocation(ip);
 			// Populate region. Note that regionName is a MaxMind class, not an instance variable

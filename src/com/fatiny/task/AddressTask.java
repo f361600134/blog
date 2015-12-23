@@ -1,40 +1,43 @@
 package com.fatiny.task;
 
 import java.util.Iterator;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
 import com.fatiny.pojo.Visitor;
 import com.fatiny.service.VisitorService;
-import com.fatiny.util.AddressUtils;
+import com.fatiny.util.LogContext;
 import com.fatiny.vo.CommonData;
 
 /**
- * @Description 解析客户端访问这得IP, 获取地域信息, 定时保存入库
+ * @Description 从内存中获取到所有的访问者,保存入库
  * @author Jeremy
  * @date 2015年12月3日 下午11:05:54 
  * @version V1.0
  */
 public class AddressTask {
+	private static Logger log = LogContext.LOG_MODULE_INTERCEPTER;
+	
 	private VisitorService visitorService;
 	public VisitorService getVisitorService() {
 		return visitorService;
 	}
+	
 	@Resource
 	public void setVisitorService(VisitorService visitorService) {
 		this.visitorService = visitorService;
 	}
 
 	public void run(){
-		//Iterator<String> iter = CommonData.ipSet.iterator();
-		//while(iter.hasNext()){
-			//String ip = iter.next();
-			//iter.remove();
-			//String address = AddressUtils.getGeoAddress(ip);
-			//System.out.println("ip:"+ip+", address:"+address);
-			//解析保存访问者信息
-			//Visitor visitor = new Visitor(ip, address);
-			//visitorService.saveOrUpdate(visitor);
-		//}
+		Iterator<Entry<String, Visitor>> iter = CommonData.visitorMap.entrySet().iterator();
+		while(iter.hasNext()){
+			Entry<String, Visitor> entry = iter.next();
+			Visitor visitor = entry.getValue();
+			log.info("visitor:" + visitor);
+			visitorService.saveOrUpdate(visitor);
+			iter.remove();
+		}
 	}
 }
