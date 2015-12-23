@@ -4,11 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.print.attribute.standard.Media;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 

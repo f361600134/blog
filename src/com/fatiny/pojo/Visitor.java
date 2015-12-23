@@ -1,6 +1,7 @@
 package com.fatiny.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,31 +27,26 @@ public class Visitor implements Serializable{
 
 	private int id;				//唯一id
 	private String ip;			//用户的IP地址
-	private String address;		//解析IP地址获取的地理
-	
-	private int port;			//端口号
+	private String address;		//解析IP地址获取的地理为位置
+	private Date date;			//最新的访问时间
+	private String device;		//系统机型
+	private String browser;		//浏览器
 	private int times;			//访问次数
-	private String device;		//机型,待定使用
 	
 	public Visitor() {
 		super();
 	}
-
-	public Visitor(String ip, String address) {
-		super();
-		this.ip = ip;
-		this.address = address;
-	}
 	
-	public Visitor(String ip, String address, int port, int times, String device) {
+	public Visitor(String ip, String address, String device, String browser) {
 		super();
 		this.ip = ip;
 		this.address = address;
-		this.port = port;
-		this.times = times;
+		this.date = new Date();
 		this.device = device;
+		this.browser = browser;
+		this.times = 1;
 	}
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name="id")
@@ -77,15 +73,7 @@ public class Visitor implements Serializable{
 		this.address = address;
 	}
 	
-	//@Column(name="port")
-	public int getPort() {
-		return port;
-	}
-	public void setPort(int port) {
-		this.port = port;
-	}
-	
-	//@Column(name="times")
+	@Column(name="times")
 	public int getTimes() {
 		return times;
 	}
@@ -93,7 +81,7 @@ public class Visitor implements Serializable{
 		this.times = times;
 	}
 	
-	//@Column(name="device")
+	@Column(name="device")
 	public String getDevice() {
 		return device;
 	}
@@ -101,10 +89,37 @@ public class Visitor implements Serializable{
 		this.device = device;
 	}
 
+	@Column(name="date")
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	@Column(name="browser")
+	public String getBrowser() {
+		return browser;
+	}
+	public void setBrowser(String browser) {
+		this.browser = browser;
+	}
+	
+	/**
+	 * @Description 刷新当前访问者的最新信息
+	 * @author Jeremy
+	 * @date 2015年12月23日 下午3:51:41 
+	 * @version V1.0
+	 */
+	public void refresh(){
+		this.date = new Date();
+		this.times +=1;
+	}
+
 	@Override
 	public String toString() {
-		return "Visitor [id=" + id + ", ip=" + ip + ", address=" + address + ", port=" + port + ", times=" + times
-				+ ", device=" + device + "]";
+		return "Visitor [id=" + id + ", ip=" + ip + ", address=" + address + ", date=" + date + ", device=" + device
+				+ ", browser=" + browser + ", times=" + times + "]";
 	}
 	
 }

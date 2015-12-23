@@ -1,7 +1,7 @@
 package com.fatiny.vo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import com.fatiny.pojo.Visitor;
 
 /**
  * @Description 
@@ -12,7 +12,9 @@ import java.util.Set;
 public class CommonData {
 	
 	//只记录1小时内玩家IP地址信息
-	public static Set<String> ipSet = new HashSet<String>();
+	//public static Set<String> ipSet = new HashSet<String>();
+	public static HashMap<String, Visitor> visitorMap = new HashMap<String, Visitor>();
+	
 //	static{
 //		ipSet.add("219.136.134.157");
 //		ipSet.add("125.70.11.136");
