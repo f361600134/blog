@@ -35,7 +35,7 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 				<h1 class="alignleft">Single Post</h1>
 				
 				<div class="search-container">
-					<form id="search" action="blog.htm">
+					<form id="search" action="index.htm">
 						<input placeholder="Search" type="text" name ="text" />
 						<button type="submit"></button>
 					</form><!--/ #search-->
@@ -71,11 +71,11 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 					<div class="one-sixth">
 
 						<div class="meta-entry">
-							<a href="blog.htm?date=${blog.showDate}" class="date"><span>${blog.showDate }</span></a>
+							<a href="index.htm?date=${blog.showDate}" class="date"><span>${blog.showDate }</span></a>
 							<a href="#" class="author"><span>${blog.author }</span></a>
 							<span class="category">
 								<c:forEach var="tag" items="${blog.tags}" varStatus="status">
-									<a href="blog.htm?tagid=${tag.id}">${tag.name}</a>
+									<a href="index.htm?tagid=${tag.id}">${tag.name}</a>
 								</c:forEach>
 							</span>
 							<span class="comments">${blog.count} comments</span>
@@ -205,7 +205,7 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 
 					<ul class="feature-menu">
 					<c:forEach var="cate" items="${categories}" varStatus="status">
-							<li><a href="blog.htm?cateid=${cate.id}">${cate.name}</a>&nbsp;<span></span></li>
+							<li><a href="index.htm?cateid=${cate.id}">${cate.name}</a>&nbsp;<span></span></li>
 					</c:forEach>
 					</ul><!--/ .feature-menu-->	
 					
