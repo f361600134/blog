@@ -29,7 +29,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/project.htm",method = RequestMethod.GET)
 	public String project(){
-		log.info("进入系统....");
+		//log.info("进入系统....");
 		return "/admin/project";
 	}
 	
@@ -39,7 +39,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/login.htm",method = RequestMethod.GET)
 	public String login(){
-		log.info("进入系统....");
+		//log.info("进入系统....");
 		return "/admin/login";
 	}
 	
@@ -118,24 +118,26 @@ public class AdminController {
 	@RequestMapping(value="/login.htm",method = RequestMethod.POST)
 	public String login(HttpServletRequest request,String userName,String password,Model model){
 		User user = null;
-		
 		//客户端首先对字符串进行验证,服务器要二次验证.
-		log.info("服务器首先对字符串进行验证,userName="+userName+",password="+password);
-		if (StringUtil.regexWord(userName) && StringUtil.regexWord(password)) {
-			String condition1 =  " username = '"+userName+"'";
-			//对密码进行暗文显示
-			//String condition2 =  " password = password('"+password+"')";
-			
-			String condition2 =  " password = '"+password+"'";
-			String hql = SimpleQueryUtil.getSelectHql(User.class, condition1,condition2);
-			log.info("登陆系统.... hql:"+hql);
-			
-			user = uservice.login(hql);
-			log.info("登陆系统.... 验证结果="+ user);
+				log.info("服务器首先对字符串进行验证,userName="+userName+",password="+password);
+		if (!StringUtil.isBlank(userName) && !StringUtil.isBlank(password)) {
+			if(StringUtil.regexWord(userName) && StringUtil.regexWord(password)) {
+				String condition1 =  " username = '"+userName+"'";
+				//对密码进行暗文显示
+				//String condition2 =  " password = password('"+password+"')";
+				
+				String condition2 =  " password = '"+password+"'";
+				String hql = SimpleQueryUtil.getSelectHql(User.class, condition1,condition2);
+				log.info("登陆系统.... hql:"+hql);
+				
+				user = uservice.login(hql);
+				//log.info("登陆系统.... 验证结果="+ user);
+			}
 		}
 		if (user != null) {
-			model.addAttribute("user", user);			 //玩家session	
-			model.addAttribute("system",System.getProperties()); //操作系统环境
+			model.addAttribute("user", user);			 			//玩家session	
+			model.addAttribute("system",System.getProperties()); 	//操作系统环境
+			request.getSession().setAttribute("loginUser", "user"); //后台登陆
 			return "/admin/index";
 		}
 		model.addAttribute(Content.ERRORMSG, Content.WRONG_LOGIN_MESSAGE);

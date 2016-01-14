@@ -30,10 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- <p></p> -->
 				<form action="" class="contacts-form" id="contacts-form" method="post">
 					<fieldset>
-						<label class="input-block"><input type="text" name="name" value="" placeholder="Name (required)"></label>
-						<label class="input-block"><input type="text" name="email" value="" placeholder="Email (required,private)"></label>
+						<label class="input-block"><input type="text" name="name" value="" placeholder="Name (required)" required></label>
+						<label class="input-block"><input type="text" name="email" value="" placeholder="Email (required,private)" required></label>
 						<label class="input-block"><input type="text" name="website" value="" placeholder="Website(private)"></label>	
-						<label class="message textarea-block"><textarea name="message" placeholder="Message (required)"></textarea></label>
+						<label class="message textarea-block"><textarea name="message" placeholder="Message (required)" required></textarea></label>
 						<br class="clear">
 					</fieldset>
 					<button type="submit" class="button-style-2 medium">Send Message</button>

@@ -48,14 +48,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" name="userName" placeholder="用户名" />
+															<input type="text" class="form-control" name="userName" placeholder="username (required)" required>
 															<i class="icon-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" name="password" placeholder="密码" />
+															<input type="password" class="form-control" name="password" placeholder="password (required)" required>
 															<i class="icon-lock"></i>
 														</span>
 													</label>
@@ -86,7 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div><!-- /widget-body -->
 								</div><!-- /login-box -->
 
-								 
 							</div><!-- /position-relative -->
 						</div>
 					</div><!-- /.col -->

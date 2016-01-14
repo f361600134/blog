@@ -61,6 +61,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 	* 该方法也是需要当前对应的Interceptor的preHandle方法的返回值为true时才会执行。
 	* 该方法将在整个请求完成之后, 也就是DispatcherServlet渲染了视图执行， 
 	* 这个方法的主要作用是用于清理资源的，当然这个方法也只能在当前这个Interceptor的preHandle方法的返回值为true时才会执行。 
+	* @change: 不知道在这里使用远程连接解析地域信息合不合理, 先这样处理.看看会不会宕机
 	*/ 
 	@Override
 	public void afterCompletion(HttpServletRequest request,
@@ -74,6 +75,8 @@ public class CommonInterceptor implements HandlerInterceptor {
 		if (visitor == null) {
 			//如果缓存没有当前访问者,则生成一个新的visitor
 			String address = AddressUtils.getGeoAddress(ip);
+			String dizhi = AddressUtils.getIpInfo(ip);
+			
 			/*获取用户的浏览器信息*/
 			String agent = request.getHeader("user-agent");
 			UserAgent uAgent = new UserAgent(agent);
@@ -81,7 +84,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 			Browser browser = uAgent.getBrowser();
 			String osName = os.getName();
 			String browserName =browser.getName();
-			visitor = new Visitor(ip, address, osName, browserName);
+			visitor = new Visitor(ip, address, dizhi, osName, browserName);
 		}else{
 			//如果缓存存在当前访问者,则改变最新/后访问时间.
 			visitor.refresh();

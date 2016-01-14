@@ -19,7 +19,7 @@ import com.fatiny.util.UtilTools;
 
 /**
  * @author Jemery
- * 文章管理类.
+ * 后台管理页面. 文章管理类.
  * 博客的新增,修改,删除等.
  */
 @Controller
@@ -35,6 +35,7 @@ public class EditController {
 	@RequestMapping(value = "/add.htm",method = RequestMethod.POST)
 	public void add(HttpServletRequest request,Blog blog){
 		log.info("文章编辑....");
+		
 		this.blogservice.saveOrUpdate(blog);
 //		return "/admin/login";
 	}

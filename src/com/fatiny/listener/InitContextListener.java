@@ -7,12 +7,16 @@ import com.fatiny.util.SystemConfig;
 
 public class InitContextListener implements ServletContextListener{
 
+	/**
+	 * 监听器,销毁监听
+	 */
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		//TODO
 	}
 
 	/**
+	 * 监听器,启动监听
 	 * 暂时只能从servlet中获取到根路径了.传给config加载函数.统一加载
 	 */
 	@Override

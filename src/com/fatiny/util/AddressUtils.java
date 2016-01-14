@@ -205,7 +205,7 @@ public class AddressUtils {
 		}
 		//如果是非本地地址的IP
 		try {
-			File dbfile = new File("D://GeoLiteCity.dat");
+			File dbfile = new File("/root/Jeremy/GeoLiteCity.dat");
 			LookupService lookupService = new LookupService(dbfile, LookupService.GEOIP_MEMORY_CACHE);
 			Location location = lookupService.getLocation(ip);
 			// Populate region. Note that regionName is a MaxMind class, not an instance variable
