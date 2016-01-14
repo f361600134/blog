@@ -8,7 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <!DOCTYPE html>
 <html>
 <head>
-      <title>用技术勾引妹子</title> 
+    <title>Angel_000你是个大二货</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
     
     <link rel="stylesheet" href="<%=path %>/css/love/default.css" type="text/css"></link>
@@ -41,32 +42,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        <div id="code">
 			      <font color="#fe6673">  	
 			      		<span class="say"> 二货,作为一个闷骚的程序猿</span><br>
-			      		<span class="say"> </span><br>
 			      		<span class="say"> 不懂情调,不会说一些动人催泪的话 </span><br>
 						<span class="say"> </span><br>
 						<span class="say"> </span><br>
-						<span class="say"> 前些年,我一直认为: </span><br>
-						<span class="say"> </span><br>
+						<span class="say"> 这些年,我一直认为: </span><br>
 			        	<span class="say">要努力做好现在该做的事</span><br>
 			        	<span class="say"> </span><br>
 			        	<span class="say">爱情就会来临的，是礼物的降临。</span><br>
-			        	<span class="say"> </span><br>
 			        	<span class="say">有些人需要练习恋爱</span><br>
-			        	<span class="say"> </span><br>
-						<span class="say">有些人却只需等待金风玉露一相逢。</span><br>
-						<span class="say"> </span><br>
+					    <span class="say">有些人却只需等待金风玉露一相逢。</span><br>
 						<span class="say">做好自己的事情，把自己变得优秀,爱情终会如期而至。</span><br>
-						<span class="say"> </span><br>
-						<span class="say"> </span><br>
  						<span class="say">我还不够优秀, 所以我一定会加油的!</span><br>
  						<span class="say"> </span><br>
 						<span class="say">夏酷暑，冬严寒，春也不死吾心，心所向，将所成。</span><br>
 						<span class="say"></span><br>
-                        <span class="say"><span class="space"></span> --by 冯事成</span>
-                        <span class="say"></span><br>
+                        <span class="say"><span class="space"></span> --by Jeremy Feng</span>
                         <span class="say"></span><br>
                         <span class="say"> 我丫就知道你看不懂上面那几句话,哈哈哈哈 </span><br>
-                        <span class="say"></span><br>
                         <span class="say"> 看得懂下面那几个字儿,就可以了[亲亲]哈哈 </span><br>
 			  </font></p>
       </div>
