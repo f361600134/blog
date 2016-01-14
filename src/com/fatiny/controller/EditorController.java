@@ -31,6 +31,12 @@ import com.fatiny.util.Content;
 import com.fatiny.util.LogContext;
 import com.fatiny.util.StringUtil;
 
+/**
+ * @Description	Ueeditor & Ckeditor 中的文章管理类
+ * @author Jeremy
+ * @date 2016年1月14日 下午4:04:29 
+ * @version V1.0
+ */
 @Controller
 @RequestMapping("/editor")
 public class EditorController {
@@ -135,7 +141,7 @@ public class EditorController {
 			}
 			List<Integer> list = new ArrayList<Integer>();
 			bts = this.tagService.getAll();
-			System.out.println("bts:"+bts+",tags:"+tags);
+//			System.out.println("bts:"+bts+",tags:"+tags);
 			for (String tag : tags) {
 				int tid = find(bts,tag);
 				list.add(tid);

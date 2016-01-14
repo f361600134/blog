@@ -34,15 +34,16 @@ public class CommonInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-//		log.info("看看preHandle会打印多少次!");
+		//log.info("看看preHandle会打印多少次!");
 		String url = request.getServletPath();
-		String ctnPath = request.getContextPath();
+		//String ctnPath = request.getContextPath();
 		
-        if (url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))	
+        if (url.equals("/admin/login.htm") /*|| !ctnPath.equals("/admin")*/)	
         	return true;
         
 		String str = (String) request.getSession().getAttribute("loginUser");
-        if(str==null){
+		log.info(".........."+str);
+        if(str == null){
         	//绝对路径
         	response.sendRedirect(request.getContextPath()+"/admin/login.htm");
 			return false;
