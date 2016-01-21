@@ -39,6 +39,23 @@ public class Visitor implements Serializable{
 	}
 	
 	/**
+	 * @Description	用于searchIp功能
+	 * @author Jeremy
+	 * @date 2016年1月19日 下午3:16:40 
+	 * @version V1.0
+	 * @param ip
+	 * @param address
+	 * @param dizhi
+	 */
+	public Visitor(String ip, String address, String dizhi) {
+		super();
+		this.ip = ip;
+		this.address = address;
+		this.dizhi = dizhi;
+	}
+	
+	
+	/**
 	 * @Description
 	 * @author Jeremy
 	 * @date 2015年12月25日 下午4:19:14 

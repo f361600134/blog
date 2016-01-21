@@ -33,9 +33,8 @@ public class EditController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add.htm",method = RequestMethod.POST)
-	public void add(HttpServletRequest request,Blog blog){
-		log.info("文章编辑....");
-		
+	public void add(HttpServletRequest request, Blog blog){
+		log.info("文章编辑....blog:"+blog);
 		this.blogservice.saveOrUpdate(blog);
 //		return "/admin/login";
 	}

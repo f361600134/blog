@@ -21,9 +21,14 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
+
+import com.fatiny.pojo.Visitor;
 import com.maxmind.geoip.Location;
 import com.maxmind.geoip.LookupService;
 import com.maxmind.geoip.regionName;
+import com.useragentutils.tools.Browser;
+import com.useragentutils.tools.OperatingSystem;
+import com.useragentutils.tools.UserAgent;
 
 
 /**
@@ -49,6 +54,30 @@ public class AddressUtils {
 			ip = request.getRemoteAddr();
 		}
 		return ip;
+	}
+	
+	/**
+	 * @Description  通过IP获取地址
+	 * @author Jeremy
+	 * @date 2016年1月19日 下午5:40:10 
+	 * @version V1.0
+	 * @param request
+	 * @return
+	 */
+	public static Visitor createVisitorByIp(HttpServletRequest request, String ip) {
+		//如果缓存没有当前访问者,则生成一个新的visitor
+		String address = AddressUtils.getGeoAddress(ip);
+		String dizhi = AddressUtils.getIpInfo(ip);
+		
+		/*获取用户的浏览器信息*/
+		String agent = request.getHeader("user-agent");
+		UserAgent uAgent = new UserAgent(agent);
+		OperatingSystem os = uAgent.getOperatingSystem();
+		Browser browser = uAgent.getBrowser();
+		String osName = os.getName();
+		String browserName =browser.getName();
+		Visitor visitor = new Visitor(ip, address, dizhi, osName, browserName);
+		return visitor;
 	}
 	
 	/**
@@ -197,7 +226,8 @@ public class AddressUtils {
 		}
 		//如果是非本地地址的IP
 		try {
-			File dbfile = new File("/root/Jeremy/GeoLiteCity.dat");
+//			File dbfile = new File("/root/Jeremy/GeoLiteCity.dat");
+			File dbfile = new File("D://GeoLiteCity.dat");
 			LookupService lookupService = new LookupService(dbfile, LookupService.GEOIP_MEMORY_CACHE);
 			Location location = lookupService.getLocation(ip);
 			// Populate region. Note that regionName is a MaxMind class, not an instance variable

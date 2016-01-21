@@ -1,10 +1,14 @@
 package com.fatiny.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -18,16 +22,19 @@ import com.fatiny.pojo.Contact;
 import com.fatiny.pojo.Logo;
 import com.fatiny.pojo.Page;
 import com.fatiny.pojo.Tag;
+import com.fatiny.pojo.Visitor;
 import com.fatiny.service.BlogService;
 import com.fatiny.service.CategorieService;
 import com.fatiny.service.ContactService;
 import com.fatiny.service.LogoService;
 import com.fatiny.service.TagService;
+import com.fatiny.util.AddressUtils;
 import com.fatiny.util.Content;
 import com.fatiny.util.DateUtil;
 import com.fatiny.util.LogContext;
 import com.fatiny.util.StringUtil;
 import com.fatiny.util.UtilTools;
+import com.fatiny.vo.CommonData;
 
 @Controller
 @RequestMapping("/front")
@@ -80,12 +87,14 @@ public class FrontController {
 		//log.info("pro:"+pro);
 		return "/front/project";
 	}
-
+	
+	
 	@RequestMapping(value = "/about.htm",method = RequestMethod.GET)
 	public String about(Model model){
 		log.info("about me");
 		return "/front/about";
-	}*/
+	}
+	*/
 	
 	/**
 	 * 有图模式
@@ -121,7 +130,6 @@ public class FrontController {
 		String date = request.getParameter("date");
 		String tagid = request.getParameter("tagid");
 
-		log.info("请求blog");
 		//分页参数
 		String spagenum = request.getParameter("pagenum");
 		Page<Blog> page = new Page<Blog>(StringUtil.getInt(spagenum));
@@ -138,7 +146,7 @@ public class FrontController {
 		try {
 			List<Blog> list = this.bservice.findByLimit(text,hql, page.getPageNum()*page.getPageSize(),page.getPageSize());
 			page.setList(list);
-			
+			log.info("请求blog"+list);
 			//blog主体内容request
 			model.addAttribute(Content.PAGE,page);
 			//翻页标签request
@@ -223,6 +231,16 @@ public class FrontController {
 		return (older+newer);
 	}
 	
+	/**
+	 * @Description 组装所需要的查询语句
+	 * @author Jeremy
+	 * @date 2016年1月21日 上午11:22:58 
+	 * @version V1.0
+	 * @param cateid
+	 * @param text
+	 * @param date
+	 * @return
+	 */
 	private String creactQuery(String cateid, String text,String date) {
 		//组装语句
 		StringBuilder hql = new StringBuilder("from Blog b ");
@@ -359,6 +377,46 @@ public class FrontController {
 		//留言方面,设置外键引用是0.不被任何文章引用
 		this.conService.saveOrUpdate(con,0,0);
 		return "redirect:/front/contacts.htm";
+	}
+	
+	@RequestMapping(value = "/searchIP.htm" ,method = RequestMethod.GET)
+	public String localIP(HttpServletRequest request, Model model){
+		log.info("=========searchIP GET==========");
+		String ip = AddressUtils.getIp(request);
+		Visitor visitor = CommonData.visitorMap.get(ip);
+		if (visitor == null) {
+			visitor = AddressUtils.createVisitorByIp(request, ip);
+		}
+		if(request.getSession().getAttribute(Content.LOCAL_VISITOR) == null)
+			request.getSession().setAttribute(Content.LOCAL_VISITOR, visitor);
+		return "/front/searchIP";
+	}
+	
+	@RequestMapping(value = "/searchIP.htm" ,method = RequestMethod.POST)
+	public void searchIP(HttpServletRequest request, HttpServletResponse response, Model model){
+		String ip = String.valueOf(request.getParameter("ip")); //文章id插入Contact表)
+		log.info("=========searchIP POST=========="+ip);
+		//String ip = AddressUtils.getIp(request);
+		Visitor visitor = CommonData.visitorMap.get(ip);
+		if (visitor == null) {
+			visitor = AddressUtils.createVisitorByIp(request, ip);
+		}
+		
+		//生成返回内容
+		String text = "<h5>IP: ?<br/></h5>\n<h6>GEO Address: ?\n<br/>Ali Address: ?<br/></h6>"; 
+		text = UtilTools.format(text, ip, visitor.getAddress(), visitor.getDizhi());
+		
+		//通过ajax返回给前端
+		response.setHeader("Cache-Control", "no-cache");
+		response.setContentType("text/html;charset=utf-8");
+		try {
+			PrintWriter out = response.getWriter();
+			text = URLDecoder.decode(text, "utf-8"); //把Ajax的传值，转换成utf-8
+			out.print(text); 
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

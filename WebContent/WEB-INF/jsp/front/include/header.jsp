@@ -102,7 +102,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<nav id="navigation" class="navigation">
 				<ul>
-					<li class="current"><a href="<%=basePath %>front/index.htm">Home</a></li>
+					<li ><a href="<%=basePath %>front/index.htm">Home</a></li>
+					<li><a href="<%=basePath %>front/searchIP.htm">Tool</a>
+						<ul>
+							<li><a href="<%=basePath %>front/searchIP.htm">IP LockUp</a></li>
+						</ul>
+					
+					</li>
 				 	<li><a href="<%=basePath %>front/contacts.htm">Contact</a></li>
 			  </ul>
 			</nav><!--/ #navigation-->

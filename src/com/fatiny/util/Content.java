@@ -38,6 +38,9 @@ public class Content {
 	
 	public static final String POPULAR_BLOG		=	"popular_blogs";
 	public static final String RECENT_PROJECT	=	"recent_projects";
+	
+	public static final String LOCAL_VISITOR		=	"visitor";
+	public static final String SEARCH_VISITOR		=	"search";
 	/**end mark**/
 	
 	
