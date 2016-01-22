@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
@@ -13,14 +14,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	$.post(
                 "searchIP.htm?ip="+$('#ip').val(),
                 function(data){
-// 	                alert("data:"+data)
-//                  $('#resText').empty();
 					$('#ip').val("");
 	   				$('#resText').html(data);
                 }
              );
 	    });
 	});
+	
+// 	$(function(){
+// 	    $('#testAjax').click(function(){
+// 	    	$.get(
+//                 "testAjax.htm",
+//                 function(data){
+// 	   				$('#testAjaxRes').html(data);
+//                 }
+//              );
+// 	    });
+// 	});
 </script>
 
 <jsp:include page="include/header.jsp"/>
@@ -42,13 +52,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="three-fourth last">
 			<h2 class="content-title">Input Your IP Address</h2>
 			<form action="" class="contacts-form" id="contacts-form" method="post">
-				<label class="input-block"><input type="text" id="ip" name="ip" value="" placeholder="IP address" required>
+				<label class="input-block"><input type="text" id="ip" name="ip" value="" placeholder="Host/IP" required>
 				</label><br class="clear">
 				<button type="button" name="lookup" id="lookup" class="button-style-2 medium">Lookup</button>
 			</form>
 			<div id="resText"></div>
 		</div>
-		
 	</div><!--/ .content-wrapper-->
 		
 <jsp:include page="include/footer.jsp"/>

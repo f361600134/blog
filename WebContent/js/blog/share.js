@@ -45,7 +45,7 @@ window.fbAsyncInit = function() {
 	    });
 	}
 		   
-/*Sina Login*/
+/*Sina Login
 WB2.anyWhere(function(W){
 	    W.widget.connectButton({
 	        id: "wb_connect_btn",	
@@ -66,9 +66,9 @@ WB2.anyWhere(function(W){
             }
         }
     });
-});
+});*/
 
-/*QQ Login*/
+/*QQ Login
 QC.Login({
 		btnId:"qqbt"	//插入按钮的节点ids
 }, function(dt, opts){
@@ -86,7 +86,7 @@ QC.Login({
 			   
 			});
 		});
-});
+});*/
 					
 /* log in */
 /*** * @returns*/

@@ -132,7 +132,9 @@ public class StringUtil {
 		return str == null || str.length() == 0;
 	}
 
-	/** 判断指定的字符串是否是空串 */
+	/** 判断指定的字符串是否是空串 
+	 * @return true:是空, false:不是空
+	 * */
 	public static boolean isBlank(String str) {
 		if (isEmpty(str))
 			return true;
