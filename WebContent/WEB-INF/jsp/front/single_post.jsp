@@ -25,6 +25,61 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 	<script src="<%=path %>/js/blog/audioplayerv1.js"></script>
 	<script src="<%=path %>/js/blog/common.js"></script>
 	<script src="<%=path %>/js/blog/jquery.touchSwipe-1.2.5.min.js"></script>
+	
+	<script type="text/javascript">
+// 		$(function(){
+// 		    $('#SubmitComment').click(function(){
+// 		    	$.post(
+// 	                "searchIP.htm?ip="+$('#ip').val(),
+// 	                function(data){
+// 						$('#ip').val("");
+// 		   				$('#resText').html(data);
+// 	                }
+// 	             );
+// 		    });
+// 		});
+
+		function onSubmit(){
+			var bid = $('#bid').val();
+			var cid = $('#cid').val();
+			var name = $('#name').val();
+			var email = $('#email').val();
+			var website = $('#website').val();
+			var message = $('#message').val();
+			$.post(
+               "single_posts_comments.htm",
+               {"bid":bid,"name":name,"email":email,"website":website,"message":message,"cid":cid,},
+               function(data){
+				$('#name').val("");
+				$('#email').val("");
+				$('#website').val("");
+				$('#message').val("");
+   				$('#allComments').html(data);
+               }
+            );
+		}
+		
+		$("document").ready(function(){
+			$.get(
+               "single_posts_comments.htm?bid="+$('#bid').val(),
+               function(data){
+   					$('#allComments').html(data);
+               }
+            );
+		})
+		
+	// 	$(function(){
+	// 	    $('#testAjax').click(function(){
+	// 	    	$.get(
+	//                 "testAjax.htm",
+	//                 function(data){
+	// 	   				$('#testAjaxRes').html(data);
+	//                 }
+	//              );
+	// 	    });
+	// 	});
+	</script>
+	
 		
 		
 		<!-- **************** - END Header - **************** -->
@@ -46,20 +101,6 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 			<section id="content">
 				
 				<article class="post-item clearfix" >
-					
-					<!-- <a class="single-image picture-icon" href="<%=path %>/images/fullscreen/big-img-12.jpg">
-						<img class="entry-image" src="<%=path %>/images/temp/blog_img_1.jpg" alt="" />
-					</a> -->
-<%-- 					<c:if test="${blog.postType == 1}"> --%>
-<!-- 						<video id="home_video" class="entry-video video-js vjs-default-skin"  data-aspect-ratio='2.41' data-setup="{}" controls> -->
-<%-- 							<source src="${blog.medias.get(0)}" type='video/mp4' ></source> --%>
-<!-- 						</video> -->
-<%-- 					</c:if> --%>
-<%-- 					<c:if test="${blog.postType == 2}"> --%>
-<!-- 						<audio class="entry-audio AudioPlayerV1"  controls="controls"> -->
-<%-- 							<source src="${blog.medias.get(0)}" type="audio/mpeg"></source> --%>
-<!-- 						</audio> -->
-<%-- 					</c:if> --%>
 					<div class="image-title clearfix" >
 						<h2>
 							<span class="post-type picture"></span>
@@ -114,87 +155,30 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 					</div><!--/ .pagination-->
 				</div><!--/ .page-title-->
 				
-				
-				<section id="comments">
-					<c:if test="${!empty contacts}">
-						<h3>Comments</h3>
-					</c:if>
-					<ol class="comments-list">
-						<!-- 循环 -->
-						<c:forEach var="contact" items="${contacts}" varStatus="status">
-						<li class="comment">
-
-							<article>
-								<img src="<%=path %>/images/gravatar.png" alt="Image" class="avatar">
-								<div class="comment-meta">
-									<h4 class="author"><a href="#">${contact.name }</a></h4>
-									<div class="date">${contact.showDate }</div>
-									<div class="reply">
-									<a class="button-style-1 small" href="#respond" onclick="return addComment.moveForm(&quot;comment-3&quot;, &quot;3&quot;, &quot;respond&quot;, &quot;41&quot;,${contact.id})">Reply</a>
-									</div>
-								</div><!--/ .comment-meta -->
-								<div class="comment-body">
-									<p>
-										<!-- Donec eget tellus non erat lacinia fermentum. Donec in velit vel ipsum auctor pulvinar. Vestibulum 
-										iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. 
-										 -->
-										 ${contact.message }
-									</p>
-								</div><!--/ .comment-body -->
-							</article>
-							
-							<c:forEach var="reply" items="${contact.conts}" varStatus="status">
-							<ul class="children">
-								<li class="comment">
-									<article>
-										<img src="<%=path %>/images/gravatar.png" alt="Image" class="avatar">
-										<div class="comment-meta">
-											<h4 class="author"><a href="#">${reply.name }</a></h4>
-											<div class="date">${reply.showDate }</div>
-											<div class="reply">
-											<a class="button-style-1 small" href="#respond" onclick="return addComment.moveForm(&quot;comment-3&quot;, &quot;3&quot;, &quot;respond&quot;, &quot;41&quot;,${contact.id})">Reply</a>
-											</div>
-										</div><!--/ .comment-meta -->
-										<div class="comment-body">
-											<p>
-											<!--  Lorem ipsum dolor sit amet, consectetuer adipis. Mauris accumsan nulla vel diam.
-											 -->
-											 ${reply.message }
-											</p>
-										</div><!--/ .comment-body -->
-									</article>
-								</li>
-							</ul><!-- end .children -->
-							</c:forEach>
-						</li><!--/ .children-->
-						</c:forEach>
-					</ol><!--/ .comments-list-->
-
-				</section><!--/ #comments-->
+				<!-- all comments -->
+				<div id="allComments"></div>
+				<!-- end -->
 				
 				<section id="respond">
 					<h3 class="content-title">Leave a Comment</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod  aliqua.</p>
-					<form method="post" id="comments-form" class="comments-form" action="single_post.htm"><!-- action="single-post.htm?bid=${blog.bid}&cid=0 "-->
+					<p>这里可以写下你的评论.</p>
+					<form id="comments-form" class="comments-form"><!-- action="single-post.htm?bid=${blog.bid}&cid=0 "-->
 						<input type="hidden" id="bid" name="bid" value="${blog.bid}"> 
 						<input type="hidden" id="cid" name="cid" value="0"> 
 						<fieldset class="input-fieldset">
-							<p class="input-block"><input type="text" name="name" value="" placeholder="Name (required)" id="comment-name" required></p>
-							<p class="input-block"><input type="text" name="email" value="" placeholder="Email (required)" id="comment-email" required></p>
-							<p class="input-block"><input type="text" name="website" value="" placeholder="Website" id="comment-website"></p>
+							<p class="input-block"><input type="text" id="name" name="name" value="" placeholder="Name (required)" id="comment-name" required></p>
+							<p class="input-block"><input type="text" id="email" name="email" value="" placeholder="Email (required)" id="comment-email" required></p>
+							<p class="input-block"><input type="text" id="website" name="website" value="" placeholder="Website" id="comment-website"></p>
 						</fieldset>
 						<fieldset class="textarea-block">
-							<textarea name="message" placeholder="Message (required)" id="comment-message" required></textarea>
+							<textarea name="message" id="message" placeholder="Message (required)" id="comment-message" required></textarea>
 						</fieldset>
-
-						<button class="button-style-2 medium" type="submit">Submit Comment</button>
+						<button class="button-style-2 medium" onclick="onSubmit()" type="button">Submit Comment</button>
 					</form><!--/ .comments-form-->
 
 				</section><!--/ #respond-->
 				
 			</section><!--/ #content-->
-			
-			
 			<!-- ********** - Sidebar - ************ -->
 			
 			<aside id="sidebar">

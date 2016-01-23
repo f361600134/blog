@@ -82,7 +82,6 @@ public class EditorController {
 		log.info("title="+p.getTitle()+" ,desc="+p.getCategories()
 				+" ,downloadurl="+p.getDownloadurl()+" ,pics="+p.getPics());
 		this.proService.saveOrUpdate(p);
-		
 	}
 	
 	
@@ -119,7 +118,7 @@ public class EditorController {
 		String cate = request.getParameter("cate");
 		String key = request.getParameter("key");
 		
-		Blog blog = new Blog(e.getTitle(),e.getContent(),e.getMdContent());
+		Blog blog = new Blog(e.getTitle(),e.getContent(),e.getMdContent(),Blog.UE);
 		blog.setPostDate(new Date());
 		
 		if (cate != null) 
@@ -167,22 +166,23 @@ public class EditorController {
 	
 	/**
 	 * UE 使用request方式获取前端内容
+	 * @deprecated
 	 * @return
 	 */
-//	@Deprecated
-//	@RequestMapping(value = "/ueeditor.htm",method = RequestMethod.POST)
-//	public String ueeditor(HttpServletRequest request,HttpServletResponse response){
-//		String title = (String) request.getParameter("title");
-//		String content = (String) request.getParameter("content");
-//		String category = (String) request.getParameter("category");
-//		
-//		log.info("title="+title+" ,content="+content+" ,category="+category);
-//		
-//		
-//		return "/user/ueEditor";
-//	}
+	/*
+	@Deprecated
+	@RequestMapping(value = "/ueeditor.htm",method = RequestMethod.POST)
+	public String ueeditor(HttpServletRequest request,HttpServletResponse response){
+		String title = (String) request.getParameter("title");
+		String content = (String) request.getParameter("content");
+		String category = (String) request.getParameter("category");
+		
+		log.info("title="+title+" ,content="+content+" ,category="+category);
+		return "/user/ueEditor";
+	}*/
 	
 	/**
+	 * @deprecated
 	 * CK编辑器入口
 	 * @return
 	 */
@@ -193,6 +193,7 @@ public class EditorController {
 	}
 	
 	/**
+	 * @deprecated
 	 * CK 注入方式获取前端内容
 	 * @param title
 	 * @param content
@@ -204,11 +205,10 @@ public class EditorController {
 	public String ckeditor(String title,String content,String category, Model model){
 		log.info("title="+title+" ,content="+content+" ,category="+category);
 		String str = StringUtil.escapeHTMLTag(content);
-		
 //		log.info("before ="+str);
 		
 //		str = StringUtil.unEscapeHTMLTag(content);
-		Blog blog = new Blog(title,content,"","Jeremy");
+		Blog blog = new Blog(title,content,"Jeremy","");
 		blog.setPostDate(new Date());
 		this.blogservice.saveOrUpdate(blog);
 		

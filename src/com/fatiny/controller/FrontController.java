@@ -1,10 +1,14 @@
 package com.fatiny.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -18,16 +22,19 @@ import com.fatiny.pojo.Contact;
 import com.fatiny.pojo.Logo;
 import com.fatiny.pojo.Page;
 import com.fatiny.pojo.Tag;
+import com.fatiny.pojo.Visitor;
 import com.fatiny.service.BlogService;
 import com.fatiny.service.CategorieService;
 import com.fatiny.service.ContactService;
 import com.fatiny.service.LogoService;
 import com.fatiny.service.TagService;
+import com.fatiny.util.AddressUtils;
 import com.fatiny.util.Content;
 import com.fatiny.util.DateUtil;
 import com.fatiny.util.LogContext;
 import com.fatiny.util.StringUtil;
 import com.fatiny.util.UtilTools;
+import com.fatiny.vo.CommonData;
 
 @Controller
 @RequestMapping("/front")
@@ -80,12 +87,28 @@ public class FrontController {
 		//log.info("pro:"+pro);
 		return "/front/project";
 	}
-
+	
+	
 	@RequestMapping(value = "/about.htm",method = RequestMethod.GET)
 	public String about(Model model){
 		log.info("about me");
 		return "/front/about";
-	}*/
+	}
+	*/
+	
+	/**
+	 * 有图模式
+	 * @deprecated
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	//@RequestMapping(value = "/posts_with_media.htm",method = RequestMethod.GET)
+	//@RequestMapping(value = "/index.htm",method = RequestMethod.GET)
+	public String postsWithImages(HttpServletRequest request,Model model){
+		find(request, model, 0);
+		return "/front/posts_with_images";
+	}
 	
 	/**
 	 * 有图模式
@@ -95,7 +118,7 @@ public class FrontController {
 	 */
 	//@RequestMapping(value = "/posts_with_media.htm",method = RequestMethod.GET)
 	@RequestMapping(value = "/index.htm",method = RequestMethod.GET)
-	public String postsWithImages(HttpServletRequest request,Model model){
+	public String posts(HttpServletRequest request,Model model){
 		find(request, model, 0);
 		return "/front/posts_with_images";
 	}
@@ -113,6 +136,16 @@ public class FrontController {
 		return "/front/posts_without_images";
 	}
 	
+	
+	/**
+	 * @Description 查找到博客渲染到页面
+	 * @author Jeremy
+	 * @date 2016年1月21日 下午6:43:26 
+	 * @version V1.0
+	 * @param request
+	 * @param model
+	 * @param blogType
+	 */
 	private void find(HttpServletRequest request, Model model,int blogType) {
 		long beginTime = System.currentTimeMillis();
 		//接受请求
@@ -121,7 +154,6 @@ public class FrontController {
 		String date = request.getParameter("date");
 		String tagid = request.getParameter("tagid");
 
-		log.info("请求blog");
 		//分页参数
 		String spagenum = request.getParameter("pagenum");
 		Page<Blog> page = new Page<Blog>(StringUtil.getInt(spagenum));
@@ -138,7 +170,7 @@ public class FrontController {
 		try {
 			List<Blog> list = this.bservice.findByLimit(text,hql, page.getPageNum()*page.getPageSize(),page.getPageSize());
 			page.setList(list);
-			
+			//log.info("请求blog"+list);
 			//blog主体内容request
 			model.addAttribute(Content.PAGE,page);
 			//翻页标签request
@@ -223,6 +255,16 @@ public class FrontController {
 		return (older+newer);
 	}
 	
+	/**
+	 * @Description 组装所需要的查询语句
+	 * @author Jeremy
+	 * @date 2016年1月21日 上午11:22:58 
+	 * @version V1.0
+	 * @param cateid
+	 * @param text
+	 * @param date
+	 * @return
+	 */
 	private String creactQuery(String cateid, String text,String date) {
 		//组装语句
 		StringBuilder hql = new StringBuilder("from Blog b ");
@@ -273,11 +315,17 @@ public class FrontController {
 		return true;
 	}
 
-	
-	
+	/**
+	 * @Description 请求单个文章
+	 * @author Jeremy
+	 * @date 2016年1月21日 下午6:09:23 
+	 * @version V1.0
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/single_post.htm" ,method = RequestMethod.GET)
 	public String single(HttpServletRequest request,Model model){
-		long beginTime = System.currentTimeMillis();
 		//请求blog所有数据
 		log.info("请求blog单个详细数据");
 		int bid = Integer.parseInt(request.getParameter("bid"));
@@ -299,33 +347,33 @@ public class FrontController {
 			blog = this.bservice.getById(bid);
 		}
 		//阅读量+1
-//		blog.setViewTimes(blog.getViewTimes()+1);
 		this.bservice.updateViewTimes(blog);
 		
 		model.addAttribute(Content.SINGLE_BLOG, blog);
-		//log.info("blog:"+blog.getContent());
-		//首先通过当前文章id,获取到所有的一级评论
-		hql = "from Contact c where c.cid = 0 and c.bid=:bid";
-		List<Contact> contacts = (List<Contact>) this.conService.findByNameParam(hql, "bid", bid);
-		
-		//然后通过当前一级评论获取二级评论
-		hql = "from Contact c where c.cid=:cid";
-		for (Contact contact : contacts) {
-			List<Contact> replys = (List<Contact>)this.conService.findByNameParam(hql, "cid", contact.getId());
-			contact.setConts(replys);
-		}
-		
-		model.addAttribute(Content.ALL_CONTACT, contacts);
 		
 		//分类管理session,
 		if (request.getSession().getAttribute(Content.ALL_CATEGORIES) == null) {
 			List<Category> Categories = this.cateService.getAll();
 			model.addAttribute(Content.ALL_CATEGORIES,Categories);
 		}
-		
-		log.info("The single total time"+(System.currentTimeMillis()-beginTime));
-		
 		return "/front/single_post";
+	}
+	
+	/**
+	 * @Description 请求单个文章所有的评论,用于前端ajax显示
+	 * @author Jeremy
+	 * @date 2016年1月21日 下午6:09:23 
+	 * @version V1.0
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/single_posts_comments.htm" ,method = RequestMethod.GET)
+	public String single_posts_comments(HttpServletRequest request,Model model){
+		//首先通过当前文章id,获取到所有的一级评论
+		int bid = Integer.parseInt(request.getParameter("bid"));
+		refreshComments(model, bid);
+		return "/front/single_post_comments";
 	}
 	
 	/**
@@ -335,15 +383,40 @@ public class FrontController {
 	 * @param con
 	 * @param r
 	 */
-	@RequestMapping(value = "/single_post.htm" ,method = RequestMethod.POST)
-	public void single(HttpServletRequest request,Model model,Contact con){
+	@RequestMapping(value = "/single_posts_comments.htm" ,method = RequestMethod.POST)
+	public String single(HttpServletRequest request,Model model,Contact con){
 		log.info("提交联系方式="+con);
 		//如果有文章id,则修改.
 		int bid = Integer.parseInt(request.getParameter("bid")); //文章id插入Contact表
 		int cid = Integer.parseInt(request.getParameter("cid")); //回复id插入reply表
 		this.conService.saveOrUpdate(con,bid,cid);
-		single(request, model);
+		refreshComments(model, bid);
+		return "/front/single_post_comments";
 	}
+	
+	
+	/**
+	 * @Description 刷新客户端留言页面
+	 * @author Jeremy
+	 * @date 2016年1月22日 下午5:51:50 
+	 * @version V1.0
+	 * @param model
+	 * @param bid
+	 */
+	public void refreshComments(Model model, int bid) {
+		//首先通过当前文章id,获取到所有的一级评论
+		String hql = "from Contact c where c.cid = 0 and c.bid=:bid";
+		List<Contact> contacts = (List<Contact>) this.conService.findByNameParam(hql, "bid", bid);
+		
+		//然后通过当前一级评论获取二级评论
+		hql = "from Contact c where c.cid=:cid";
+		for (Contact contact : contacts) {
+			List<Contact> replys = (List<Contact>)this.conService.findByNameParam(hql, "cid", contact.getId());
+			contact.setConts(replys);
+		}
+		model.addAttribute(Content.ALL_CONTACT, contacts);
+	}
+	
 	
 	@RequestMapping(value = "/contacts.htm" ,method = RequestMethod.GET)
 	public String contact(Model model){
@@ -361,6 +434,46 @@ public class FrontController {
 		return "redirect:/front/contacts.htm";
 	}
 	
+	@RequestMapping(value = "/searchIP.htm" ,method = RequestMethod.GET)
+	public String localIP(HttpServletRequest request, Model model){
+		log.info("=========searchIP GET==========");
+		String ip = AddressUtils.getIp(request);
+		Visitor visitor = CommonData.visitorMap.get(ip);
+		if (visitor == null) {
+			visitor = AddressUtils.createVisitorByIp(request, ip);
+		}
+		if(request.getSession().getAttribute(Content.LOCAL_VISITOR) == null)
+			request.getSession().setAttribute(Content.LOCAL_VISITOR, visitor);
+		return "/front/searchIP";
+	}
+	
+	@RequestMapping(value = "/searchIP.htm" ,method = RequestMethod.POST)
+	public void searchIP(HttpServletRequest request, HttpServletResponse response, Model model){
+		String ip = String.valueOf(request.getParameter("ip")); //文章id插入Contact表)
+		if (!StringUtil.isBlank(ip)){
+			Visitor visitor = CommonData.visitorMap.get(ip);
+			if (visitor == null) {
+				visitor = AddressUtils.createVisitorByIp(request, ip);
+			}
+			//生成返回内容
+			String text = "<h5>IP: ?<br/></h5>\n<h6>GEO Address: ?\n<br/>Ali Address: ?<br/></h6>"; 
+			text = UtilTools.format(text, ip, visitor.getAddress(), visitor.getDizhi());
+			
+			//通过ajax返回给前端
+			response.setHeader("Cache-Control", "no-cache");
+			response.setContentType("text/html;charset=utf-8");
+			try {
+				PrintWriter out = response.getWriter();
+				text = URLDecoder.decode(text, "utf-8"); //把Ajax的传值，转换成utf-8
+				out.print(text); 
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else{
+			//TODO
+		}
+	}
 	
 	private LogoService loservice;
 	private BlogService bservice;
