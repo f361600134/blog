@@ -39,8 +39,6 @@ public class Visitor implements Serializable{
 	}
 	
 	/**
-<<<<<<< HEAD
-=======
 	 * @Description	用于searchIp功能
 	 * @author Jeremy
 	 * @date 2016年1月19日 下午3:16:40 
@@ -58,7 +56,6 @@ public class Visitor implements Serializable{
 	
 	
 	/**
->>>>>>> branch 'master' of https://github.com/f361600134/blog.git
 	 * @Description
 	 * @author Jeremy
 	 * @date 2015年12月25日 下午4:19:14 

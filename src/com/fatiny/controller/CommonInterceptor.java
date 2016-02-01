@@ -11,12 +11,8 @@ import com.fatiny.pojo.Visitor;
 import com.fatiny.util.AddressUtils;
 import com.fatiny.util.LogContext;
 import com.fatiny.vo.CommonData;
-import com.useragentutils.tools.Browser;
-import com.useragentutils.tools.OperatingSystem;
-import com.useragentutils.tools.UserAgent;
 
 public class CommonInterceptor implements HandlerInterceptor {
-	
 	private static Logger log = LogContext.LOG_MODULE_INTERCEPTER;
 	
 	public CommonInterceptor() {}
@@ -34,14 +30,17 @@ public class CommonInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
+		log.info("看看preHandle会打印多少次!");
 		String url = request.getServletPath();
 		String ctnPath = request.getContextPath();
 		
-        if (url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))	
+		log.info("ctnPath:"+ctnPath);
+        if (!url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))
         	return true;
         
-		String str = (String) request.getSession().getAttribute("loginUser");
-        if(str==null){
+        String user = (String) request.getSession().getAttribute("loginUser");
+        log.info("user:"+user);
+        if(user == null){
         	//绝对路径
         	response.sendRedirect(request.getContextPath()+"/admin/login.htm");
 			return false;
@@ -74,17 +73,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 		Visitor visitor = CommonData.visitorMap.get(ip);
 		if (visitor == null) {
 			//如果缓存没有当前访问者,则生成一个新的visitor
-			String address = AddressUtils.getGeoAddress(ip);
-			String dizhi = AddressUtils.getIpInfo(ip);
-			
-			/*获取用户的浏览器信息*/
-			String agent = request.getHeader("user-agent");
-			UserAgent uAgent = new UserAgent(agent);
-			OperatingSystem os = uAgent.getOperatingSystem();
-			Browser browser = uAgent.getBrowser();
-			String osName = os.getName();
-			String browserName =browser.getName();
-			visitor = new Visitor(ip, address, dizhi, osName, browserName);
+			visitor = AddressUtils.createVisitorByIp(request, ip);
 		}else{
 			//如果缓存存在当前访问者,则改变最新/后访问时间.
 			visitor.refresh();

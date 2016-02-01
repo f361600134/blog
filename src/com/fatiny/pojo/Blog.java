@@ -29,7 +29,7 @@ public class Blog implements Serializable,Cloneable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private int bid;			//主键id
 	private String title;		//标题
 	private String content;		//内容
@@ -40,6 +40,11 @@ public class Blog implements Serializable,Cloneable{
 	private int cateId;			//文章类型
 	private String media;		//多媒体
 	private int viewTimes;		//阅读次数
+	private int editorType;		//编辑器类型,UE or MK
+	
+	//编辑器静态公共类型
+	public static final int UE	=	0;
+	public static final int MK	=	1;
 	
 	//不做入库处理的数据
 	private int count;		//评论数量
@@ -129,7 +134,13 @@ public class Blog implements Serializable,Cloneable{
 	public void setMedia(String media) {
 		this.media = media;
 	}
-	
+	@Column(name="editorType",columnDefinition="int default 0")
+	public int getEditorType() {
+		return editorType;
+	}
+	public void setEditorType(int editorType) {
+		this.editorType = editorType;
+	}
 	
 	@Transient
 	public List<String> getMedias() {
@@ -145,13 +156,18 @@ public class Blog implements Serializable,Cloneable{
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
+	
 	public Blog() {
 		this.medias=new ArrayList<String>();
 	}
+	
+	/*
 	public Blog(String content) {
 		this.content = content;
 		this.medias=new ArrayList<String>();
 	}
+	*/
+	
 	public Blog(String title, String content, String author,String mdContent) {
 		super();
 		this.title = title;
@@ -160,13 +176,18 @@ public class Blog implements Serializable,Cloneable{
 		this.mdContent = mdContent;
 		this.medias=new ArrayList<String>();
 	}
-	public Blog(String title, String content,String mdContent) {
+	
+	
+	public Blog(String title, String content,String mdContent,int editorType) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.mdContent = mdContent;
+		this.editorType = editorType;
 		this.medias=new ArrayList<String>();
 	}
+	
+	/*
 	public Blog(int bid, String title, String content, String author,
 			Date postDate, List<Integer> type) {
 		super();
@@ -176,7 +197,8 @@ public class Blog implements Serializable,Cloneable{
 		this.author = author;
 		this.postDate = postDate;
 		this.medias=new ArrayList<String>();
-	}
+	}*/
+	
 	@Override
 	public Blog clone()  {
 		Blog blog = null;
@@ -187,5 +209,11 @@ public class Blog implements Serializable,Cloneable{
 		}
 		return blog;
 	}
+	
+	@Override
+	public String toString() {
+		return "Blog [bid=" + bid + ", title=" + title + ", editorType=" + editorType + "]";
+	}
+	
 	
 }
