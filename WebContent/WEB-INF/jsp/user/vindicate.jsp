@@ -22,6 +22,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=path %>/js/love/jscex-async-powerpack.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/love/functions.js" charset="utf-8"></script>
 	<script type="text/javascript" src="<%=path %>/js/love/love.js" charset="utf-8"></script>
+	<script type="text/javascript"> 
+	window.onload=function(){
+	document.onselectstart =function() {return   false;}     
+	document.ondragstart   =function() {return   false;}      
+	document.oncontextmenu =function() {return   false;}        
+	new AI.TGame();
+	}
+	</script>
 	
 	<style type="text/css">
 	<!--
@@ -57,16 +65,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span class="say">夏酷暑，冬严寒，春也不死吾心，心所向，将所成。</span><br>
 						<span class="say"></span><br>
                         <span class="say"><span class="space"></span> --by Jeremy Feng</span>
+                        <span class="say"><span class="space"></span>  2015.12.23日</span><br>
                         <span class="say"></span><br>
-                        <span class="say"> 我丫就知道你看不懂上面那几句话,哈哈哈哈 </span><br>
-                        <span class="say"> 看得懂下面那几个字儿,就可以了[亲亲]哈哈 </span><br>
+                        <span class="say">以前不知道电影&lt;one day&gt;中的那句, </span><br>
+                        <span class="say">我爱你, 但是不会再喜欢你了! </span><br>
+                        <span class="say">现在终于知道, 这句话饱含的这种感情: </span><br>
+                        <span class="say">我会回想我们的过去, 但是我不会再去想我们的将来... </span><br>
 			  </font></p>
       </div>
-                </div>
+ </div>
                 <div id="clock-box">
-                    <span class="STYLE1"></span><font color="#fe6673"> 我喜欢你, </font>
-<span class="STYLE1">已经是……</span>
-                  <div id="clock"></div>
+                <span class="STYLE1"></span><font color="#fe6673"> 我喜欢你, </font>
+<span class="STYLE1">止于</span><br><br>
+                  <!-- <div id="clock"></div> -->
+                  第 <span class="digit">170</span> 天 
+                  <span class="digit">00</span> 小时 
+                  <span class="digit">19</span> 分钟 
+                  <span class="digit">11</span> 秒
               </div>
                 <canvas id="canvas" width="1100" height="680"></canvas>
             </div>
@@ -204,8 +219,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         var textAnimate = eval(Jscex.compile("async", function () {
 		    var together = new Date();
-		    together.setFullYear(2015,08,29); 			//时间年月日
-		    together.setHours(20);						//小时	
+		    together.setFullYear(2016,1,17); 			//时间年月日,month:0~11 表示 1~12月份
+		    together.setHours(0);						//小时	
 		    together.setMinutes(0);					//分钟
 		    together.setSeconds(0);					//秒前一位
 		    together.setMilliseconds(2);				//秒第二位

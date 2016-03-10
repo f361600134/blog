@@ -170,7 +170,7 @@ public class FrontController {
 		try {
 			List<Blog> list = this.bservice.findByLimit(text,hql, page.getPageNum()*page.getPageSize(),page.getPageSize());
 			page.setList(list);
-			//log.info("请求blog"+list);
+			log.info("请求blog"+list);
 			//blog主体内容request
 			model.addAttribute(Content.PAGE,page);
 			//翻页标签request
