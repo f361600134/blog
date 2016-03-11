@@ -31,6 +31,9 @@ public class LogContext {
 	private static final String MODULE_TAG	 = "MODULE_TAG";
 	/** 模块- LINK */
 	private static final String MODULE_LINK	 = "MODULE_LINK";
+	/** 模块- CAPTCHAR */
+	private static final String MODULE_GEE	 = "MODULE_GEE";
+	
 	
 	/** 日志- UTILS */
 	public static final Logger LOG_MODULE_UTILS = LoggerFactory.getLogger(MODULE_UTILS);	
@@ -52,6 +55,7 @@ public class LogContext {
 	public static final Logger LOG_MODULE_TAG = LoggerFactory.getLogger(MODULE_TAG);
 	/** 日志- MODULE_LINK */
 	public static final Logger LOG_MODULE_LINK = LoggerFactory.getLogger(MODULE_LINK);
-	
+	/** 日志- MODULE_LINK */
+	public static final Logger LOG_MODULE_GEE = LoggerFactory.getLogger(MODULE_GEE);
 	
 }
