@@ -68,7 +68,7 @@ Stylesheet Guide
 /*	Reset
 /* ---------------------------------------------------------------------- */
 	
-html, body, div, span, object, iframe,
+html, body, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
 del, dfn, em, img, ins, kbd, q, samp,
@@ -3963,4 +3963,11 @@ ul.related span.categories {color: #50554e; font-style: italic;}
 		}
 	
 	
+}
+
+.success{
+margin:0;
+padding:0;
+border-left-width:0;
+background:transparent;
 }

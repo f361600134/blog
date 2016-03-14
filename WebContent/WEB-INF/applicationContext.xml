@@ -45,17 +45,13 @@
 		-->
 		<property name="hibernateProperties">
 			<value>
-				<!-- mac这儿需要打开注释 -->
-				<!-- 数据库方言包-->
-<!-- 				hibernate.dialect=org.hibernate.dialect.MySQLDialect  -->
-				<!--hibernate.show_sql=true -->
-<!-- 				hibernate.jdbc.batch_size=50 -->
-				<!--
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+<!-- 				hibernate.show_sql=true -->
+				hibernate.jdbc.batch_size=50
 				hibernate.cache.use_second_level_cache=true
-				hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory
-				hibernate.cache.use_query_cache=true
-				-->
-				<!--  -->hibernate.hbm2ddl.auto=update
+<!-- 				hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory -->
+<!-- 				hibernate.cache.use_query_cache=true -->
+				hibernate.hbm2ddl.auto=update
 			</value>
 		</property>
 	</bean>

@@ -59,5 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="resText"></div>
 		</div>
 	</div><!--/ .content-wrapper-->
+	
+
 		
 <jsp:include page="include/footer.jsp"/>

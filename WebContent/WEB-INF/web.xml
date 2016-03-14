@@ -53,12 +53,12 @@
 	
 	<error-page>
 		<error-code>404</error-code>
-		<location>/</location>
+		<location>/front/404.htm</location>
 	</error-page>
 	
 	<error-page>
 		<error-code>500</error-code>
-		<location>/</location>
+		<location>/front/404.htm</location>
 	</error-page>
 	
     <welcome-file-list>

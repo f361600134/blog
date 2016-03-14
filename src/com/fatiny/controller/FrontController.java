@@ -428,6 +428,15 @@ public class FrontController {
 		return "/front/contacts";
 	}
 	
+	@RequestMapping(value = "/404.htm" ,method = RequestMethod.GET)
+	public String notfound(){
+		return "/front/404";
+	}
+	
+	@RequestMapping(value = "/test.htm" ,method = RequestMethod.GET)
+	public String test(){
+		return "/front/test";
+	}
 	
 	/**
 	 * @Description 这部分代码可以单独成类, 所有要用的地方全部调用这个函数即可.

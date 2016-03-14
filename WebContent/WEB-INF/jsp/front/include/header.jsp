@@ -5,16 +5,16 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if lte IE 8]>              <html class="ie8 no-js" lang="en">     <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="en">  <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]>-->	<html class="not-ie no-js" lang="en">  <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<title>Fatiny</title>
 	
-	<meta name="description" content="">
+	<meta name="description" content="This is my page">
 	<meta name="author" content="Jeremy">
 	<meta property="qc:admins" content="325627643766141616375" />
 	<meta property="wb:webmaster" content="2816be2676200db0" />
@@ -36,10 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- Sina login
 	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=769348763" type="text/javascript" charset="utf-8"></script>
 	 -->
-	<script  type="text/javascript" src="<%=path %>/js/blog/share.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/blog/jquery.min.js"></script>
 	<script>!window.jQuery && document.write('<script src="<%=path %>/js/jquery-1.7.1.min.js"><\/script>')</script>
-	
+	<script src="http://static.geetest.com/static/tools/gt.js"></script>
+	<script  type="text/javascript" src="<%=path %>/js/blog/share.js"></script>
 </head>
 <body class="liquid light">
 
