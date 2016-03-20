@@ -25,7 +25,6 @@ import com.fatiny.pojo.Tag;
 import com.fatiny.pojo.Visitor;
 import com.fatiny.sdk.gee.GeetestConfig;
 import com.fatiny.sdk.gee.GeetestLib;
-import com.fatiny.sdk.gee.GeetestVerify;
 import com.fatiny.service.BlogService;
 import com.fatiny.service.CategorieService;
 import com.fatiny.service.ContactService;

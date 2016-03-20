@@ -130,8 +130,11 @@ public class EditorController {
 			//首先添加到tag表
 			List<Tag> bts = this.tagService.getAll();
 			String [] tags = key.split(",");
-			//截取数组
-			tags = Arrays.copyOfRange(tags, 0, 3);
+			if(tags.length > 3){
+				//截取数组
+				tags = Arrays.copyOfRange(tags, 0, 3);
+			}
+			
 			for (String tag : tags) {
 				int tid = find(bts,tag);
 				if (tid == 0) {
