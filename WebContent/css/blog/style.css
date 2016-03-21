@@ -68,7 +68,7 @@ Stylesheet Guide
 /*	Reset
 /* ---------------------------------------------------------------------- */
 	
-html, body, span, object, iframe,
+html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
 del, dfn, em, img, ins, kbd, q, samp,
@@ -603,7 +603,7 @@ blockquote {
 	
 	.normal,
 	.info,
-	.success,
+	.success_box,
 	.error,
 	.notice,
 	.download {
@@ -623,7 +623,7 @@ blockquote {
 	.dark blockquote.normal {border-left-color: #fff;}
 	
 	blockquote.info {border-left-color: #2b65a6; color: #2b65a6;}
-	blockquote.success {border-left-color: #457935; color: #457935;}
+	blockquote.success_box {border-left-color: #457935; color: #457935;}
 	blockquote.error {border-left-color: #a6412b; color: #a6412b;}
 	blockquote.notice {border-left-color: #e16500; color: #e16500;}
 	blockquote.download {border-left-color: #2ba2a6; color: #2ba2a6;}
@@ -2276,7 +2276,7 @@ ul.related span.categories {color: #50554e; font-style: italic;}
 	top: auto;
 }
 
-#form .success {display: none;}
+#form .success_box {display: none;}
 
 .contact-block {
 	margin-bottom: 20px;
@@ -3963,11 +3963,4 @@ ul.related span.categories {color: #50554e; font-style: italic;}
 		}
 	
 	
-}
-
-.success{
-margin:0;
-padding:0;
-border-left-width:0;
-background:transparent;
 }
