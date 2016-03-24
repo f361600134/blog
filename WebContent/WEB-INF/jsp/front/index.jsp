@@ -110,7 +110,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div><!--/ .tabs-container -->		
 		</div><!--/ .content-tabs-->
 		<!-- ************** - end Tabs Container - ************** -->
-
 		
 		<c:if test="${not empty home_contacts}">
 			<!-- ************* - BEGIN Testimonials - *************** -->
