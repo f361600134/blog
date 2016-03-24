@@ -143,7 +143,6 @@ public class EditorController {
 			}
 			List<Integer> list = new ArrayList<Integer>();
 			bts = this.tagService.getAll();
-//			System.out.println("bts:"+bts+",tags:"+tags);
 			for (String tag : tags) {
 				int tid = find(bts,tag);
 				list.add(tid);
