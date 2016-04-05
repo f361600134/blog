@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import com.fatiny.pojo.Visitor;
 import com.fatiny.service.VisitorService;
 import com.fatiny.util.LogContext;
-import com.fatiny.vo.CommonData;
+import com.fatiny.vo.AppData;
 
 /**
  * @Description 从内存中获取到所有的访问者,保存入库
@@ -31,7 +31,7 @@ public class AddressTask {
 	}
 
 	public void run(){
-		Iterator<Entry<String, Visitor>> iter = CommonData.visitorMap.entrySet().iterator();
+		Iterator<Entry<String, Visitor>> iter = AppData.visitorMap.entrySet().iterator();
 		while(iter.hasNext()){
 			Entry<String, Visitor> entry = iter.next();
 			Visitor visitor = entry.getValue();

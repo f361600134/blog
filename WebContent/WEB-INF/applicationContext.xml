@@ -14,8 +14,7 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.fatiny" />
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
@@ -26,8 +25,10 @@
 		<property name="initialSize" value="${jdbc.initialSize}"></property>
 	</bean>
 
+	<!-- 这个标签检测到文件加载之后，会停止对剩余的文件进行加载。所以扫描多个properties，使用通配符 -->
 	<context:property-placeholder location="classpath*:jdbc.properties" />
-
+	<context:property-placeholder location="classpath*:System.properties" />
+	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
