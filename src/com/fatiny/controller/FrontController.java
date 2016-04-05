@@ -36,7 +36,7 @@ import com.fatiny.util.DateUtil;
 import com.fatiny.util.LogContext;
 import com.fatiny.util.StringUtil;
 import com.fatiny.util.UtilTools;
-import com.fatiny.vo.CommonData;
+import com.fatiny.vo.AppData;
 
 @Controller
 @RequestMapping("/front")
@@ -536,7 +536,7 @@ public class FrontController {
 	public String localIP(HttpServletRequest request, Model model){
 		log.info("=========searchIP GET==========");
 		String ip = AddressUtils.getIp(request);
-		Visitor visitor = CommonData.visitorMap.get(ip);
+		Visitor visitor = AppData.visitorMap.get(ip);
 		if (visitor == null) {
 			visitor = AddressUtils.createVisitorByIp(request, ip);
 		}
@@ -549,7 +549,7 @@ public class FrontController {
 	public void searchIP(HttpServletRequest request, HttpServletResponse response, Model model){
 		String ip = String.valueOf(request.getParameter("ip")); //文章id插入Contact表)
 		if (!StringUtil.isBlank(ip)){
-			Visitor visitor = CommonData.visitorMap.get(ip);
+			Visitor visitor = AppData.visitorMap.get(ip);
 			if (visitor == null) {
 				visitor = AddressUtils.createVisitorByIp(request, ip);
 			}
