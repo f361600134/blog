@@ -214,6 +214,15 @@ public class AddressUtils {
 		return outBuffer.toString();
 	}
 	
+	/**
+	 * 这部分代码，可以改成单例模式
+	 * 配置文件路径改成外接形式的
+	* @author Jeremy
+	* @date Apr 4, 2016 11:15:00 AM 
+	* @param @param ip
+	* @return String
+	* @throws
+	 */
 	public static String getGeoAddress(String ip){
 		//本地
 		if (ip.contains(localip) || ip.contains(localip2)) {
@@ -271,6 +280,13 @@ public class AddressUtils {
 		System.out.println("==>"+address);
 	}
 	
+	/**
+	* 简单的压力测试
+	* @author Jeremy
+	* @date Apr 4, 2016 11:12:25 AM 
+	* @param 
+	* @return void
+	 */
 	@Test
 	public void splitGeoips(){
 //		List<String> list = new ArrayList<String>(Arrays.asList("103.9.116.204", "24.143.198.188"));

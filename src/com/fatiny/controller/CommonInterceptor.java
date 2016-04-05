@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fatiny.pojo.Visitor;
 import com.fatiny.util.AddressUtils;
 import com.fatiny.util.LogContext;
-import com.fatiny.vo.CommonData;
+import com.fatiny.vo.AppData;
 
 public class CommonInterceptor implements HandlerInterceptor {
 	private static Logger log = LogContext.LOG_MODULE_INTERCEPTER;
@@ -70,7 +70,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 	
 		/*通过IP解析地理位置*/
 		String ip = AddressUtils.getIp(request);
-		Visitor visitor = CommonData.visitorMap.get(ip);
+		Visitor visitor = AppData.visitorMap.get(ip);
 		if (visitor == null) {
 			//如果缓存没有当前访问者,则生成一个新的visitor
 			visitor = AddressUtils.createVisitorByIp(request, ip);
@@ -79,7 +79,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 			visitor.refresh();
 		}
 		//put替代新的visitor
-		CommonData.visitorMap.put(ip, visitor);
+		AppData.visitorMap.put(ip, visitor);
 		log.info("处理记录用户信息用时:"+(System.currentTimeMillis()-beginTime));
 	}
 	
