@@ -8,8 +8,7 @@ public class SystemConfig {
 	/**项目名称**/
 	public static String PROJECT_NAME;
 	
-	public static void init(){
-	}
+	public static void init(){}
 	
 	public static void initPath(String rootPath,String context){
 		ROOT_PATH = rootPath;
