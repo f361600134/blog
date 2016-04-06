@@ -11,7 +11,6 @@ import com.fatiny.pojo.Visitor;
 import com.fatiny.util.AddressUtils;
 import com.fatiny.util.LogContext;
 import com.fatiny.vo.AppData;
-import com.fatiny.vo.SystemData;
 
 public class CommonInterceptor implements HandlerInterceptor {
 	private static Logger log = LogContext.LOG_MODULE_INTERCEPTER;
@@ -35,7 +34,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 		String url = request.getServletPath();
 		String ctnPath = request.getContextPath();
 		
-		log.info("ctnPath:"+ctnPath+", DataManager.geoPath:"+SystemData.geoPathData);
+		log.info("ctnPath:"+ctnPath);
         if (!url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))
         	return true;
         

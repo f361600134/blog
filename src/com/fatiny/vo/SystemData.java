@@ -7,14 +7,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SystemData {
 	//地址资源文件路径
-	
-	public static String geoPathData;
+	private String geoPath;
 	
 	@Value("${geo.geoPath}")
-	public void setPrivateName(String geoPath) {
-		SystemData.geoPathData = geoPath;
-		System.out.println("=============>"+SystemData.geoPathData);
-	}  
+	public void setGeoPath(String geoPath) {this.geoPath = geoPath;}
+	public String getGeoPath() {return geoPath;}
+	
+	
 }
 
 
