@@ -36,7 +36,6 @@ public class SpringUtil {
 		if(applicationContext != null){
 			return applicationContext.getBean(cls);
 		}
-	    
 		return null;
 	}
 }

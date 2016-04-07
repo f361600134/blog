@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		">
 		
-	<!-- 页面渲染 -->
+	<!-- 开始spring mvc的注解 -->
+	 <mvc:annotation-driven/>
+	 <!-- <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" /> <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"> <property name="favorPathExtension" value="false" /> <property name="favorParameter" value="false" /> <property name="ignoreAcceptHeader" value="false" /> <property name="mediaTypes" > <value> atom=application/atom+xml html=text/html json=application/json *=*/* </value> </property> </bean>
+	-->
+	
+	<!-- 这样根目录下面的resource的文件(.css,.js等)就不会被spring的DispatchServlet进行过滤 -->
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+	    <!-- 多个拦截器,顺序执行 -->
+	    <mvc:interceptor>
+	      <!-- <mvc:mapping path="/user/*" />如果不配置或/*,将拦截所有的Controller -->
+	       <mvc:mapping path="/**" /><!-- 如果不配置或/*,将拦截所有的Controller -->
+	       <bean class="com.fatiny.controller.CommonInterceptor"></bean>
+	        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 --> 
+	    </mvc:interceptor>    
+	</mvc:interceptors>
+
+	<context:component-scan base-package="com.fatiny.controller"/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
 	</bean>
-	<!-- end -->
-	
 	
     <!-- 定时任务 -->
 	<bean id="addressTask" class="com.fatiny.task.AddressTask"/>
@@ -53,28 +77,7 @@
 	    </property>
 	</bean>
 	
-	<!-- reload properties -->
-	<bean
-		class="com.morgan.design.properties.internal.ReloadablePropertyPostProcessor">
-		<constructor-arg ref="propertyConfigurator" />
-		<constructor-arg ref="eventNotifier" />
-		<constructor-arg ref="conversionService" />
-	</bean>
-
-	<bean  id="propertyConfigurator"
-		class="com.morgan.design.properties.internal.ReadablePropertySourcesPlaceholderConfigurer">
-		<property name="ignoreUnresolvablePlaceholders" value="false" />
-		<property name="ignoreResourceNotFound" value="true" />
-		<constructor-arg ref="eventNotifier" />
-		<constructor-arg ref="propertyResolver" />
-		<property name="locations">
-			<list>
-				<value>classpath*:META-INF/*.properties</value>
-				<value>classpath:test.properties</value>
-				<value>file:${CONFIG_DIR}/global.properties</value>
-			</list>
-		</property>
-	</bean>
+	
 
 <!--     <mvc:interceptors>   -->
 <!--   		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" ></bean> -->

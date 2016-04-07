@@ -8,6 +8,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.fatiny.util.SpringUtil;
 import com.fatiny.util.SystemConfig;
+import com.fatiny.vo.AppData;
 
 public class InitContextListener implements ServletContextListener{
 
@@ -35,10 +36,11 @@ public class InitContextListener implements ServletContextListener{
 		WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(arg.getServletContext());
 		SpringUtil.setApplicationContext(wac);
 		
+		//app属性配置
+		AppData.initAppData();
+		
+		
 		//
-		
-		
-		
 		//SystemData data = (SystemData)wac.getBean("systemData");
 		//System.out.println("=============>contextInitialized.data:"+data.getGeoPath());
 		
