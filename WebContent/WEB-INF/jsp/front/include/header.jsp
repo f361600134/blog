@@ -107,7 +107,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul>
 							<li><a href="<%=basePath %>front/searchIP.htm">IP LockUp</a></li>
 						</ul>
-					
 					</li>
 				 	<li><a href="<%=basePath %>front/contacts.htm">Contact</a></li>
 			  </ul>

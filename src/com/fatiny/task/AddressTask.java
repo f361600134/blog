@@ -37,7 +37,7 @@ public class AddressTask {
 		while(iter.hasNext()){
 			Entry<String, Visitor> entry = iter.next();
 			Visitor visitor = entry.getValue();
-			log.info("visitor:" + visitor);
+			//log.info("visitor:" + visitor);
 			visitorService.saveOrUpdate(visitor);
 			iter.remove();
 		}
