@@ -18,13 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.junit.Test;
 
 import com.fatiny.pojo.Visitor;
+import com.fatiny.vo.AppData;
 import com.maxmind.geoip.Location;
 import com.maxmind.geoip.LookupService;
 import com.maxmind.geoip.regionName;
 import com.useragentutils.tools.Browser;
 import com.useragentutils.tools.OperatingSystem;
 import com.useragentutils.tools.UserAgent;
-
 
 /**
  * 根据IP地址获取详细的地域信息
@@ -190,8 +190,7 @@ public class AddressUtils {
 							value = (value << 4) + 10 + aChar - 'A';
 							break;
 						default:
-							throw new IllegalArgumentException(
-									"Malformed      encoding.");
+							throw new IllegalArgumentException("Malformed      encoding.");
 						}
 					}
 					outBuffer.append((char) value);
@@ -230,11 +229,11 @@ public class AddressUtils {
 		}
 		//如果是非本地地址的IP
 		try {
-			File dbfile = new File("/root/Jeremy/GeoLiteCity.dat");
-			if (!dbfile.isFile())
+			//File geoFile = new File("/root/Jeremy/GeoLiteCity.dat");
+			File geoFile = AppData.geoFile;
+			if (!geoFile.isFile())
 				return errorResult;
-			//File dbfile = new File("D://GeoLiteCity.dat");
-			LookupService lookupService = new LookupService(dbfile, LookupService.GEOIP_MEMORY_CACHE);
+			LookupService lookupService = new LookupService(geoFile, LookupService.GEOIP_MEMORY_CACHE);
 			Location location = lookupService.getLocation(ip);
 			// Populate region. Note that regionName is a MaxMind class, not an instance variable
 			if (location != null) {
@@ -283,7 +282,7 @@ public class AddressUtils {
 	/**
 	* 简单的压力测试
 	* @author Jeremy
-	* @date Apr 4, 2016 11:12:25 AM 
+	* @date Apr 4, 2016 11:12:25 AM
 	* @param 
 	* @return void
 	 */

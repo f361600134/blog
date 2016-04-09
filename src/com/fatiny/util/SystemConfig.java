@@ -7,6 +7,7 @@ public class SystemConfig {
 	public static String REAL_PATH;
 	/**项目名称**/
 	public static String PROJECT_NAME;
+	/***/
 	
 	public static void init(){}
 	
@@ -15,13 +16,8 @@ public class SystemConfig {
 		//if (context.contains("/")) {
 		//	context = context.replace("/", "\\");
 		//}
-		
 		context = context.contains("/") ? context.replace("/", "\\") : context;
 		PROJECT_NAME = context;
 		REAL_PATH = rootPath.replace(context, "");
-	}
-	
-	public static void main(String[] args) {
-		
 	}
 }

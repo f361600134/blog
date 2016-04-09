@@ -269,10 +269,7 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 					</ul>
 					
 				</div><!--/ .widget-->
-
-				
 			</aside><!--/ #sidebar-->
-			
 			<!-- ********** - END Sidebar - ************ -->
 		</div><!--/ .content-wrapper-->
 		

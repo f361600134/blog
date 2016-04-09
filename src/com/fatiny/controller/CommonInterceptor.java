@@ -11,7 +11,6 @@ import com.fatiny.pojo.Visitor;
 import com.fatiny.util.AddressUtils;
 import com.fatiny.util.LogContext;
 import com.fatiny.vo.AppData;
-import com.fatiny.vo.SystemData;
 
 public class CommonInterceptor implements HandlerInterceptor {
 	private static Logger log = LogContext.LOG_MODULE_INTERCEPTER;
@@ -31,16 +30,16 @@ public class CommonInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		log.info("看看preHandle会打印多少次!");
+		//log.info("看看preHandle会打印多少次!");
 		String url = request.getServletPath();
 		String ctnPath = request.getContextPath();
 		
-		log.info("ctnPath:"+ctnPath+", DataManager.geoPath:"+SystemData.geoPathData);
+		//log.info("ctnPath:"+ctnPath);
         if (!url.equals("/admin/login.htm") || !ctnPath.equals("/admin"))
         	return true;
         
         String user = (String) request.getSession().getAttribute("loginUser");
-        log.info("user:"+user);
+        //log.info("user:"+user);
         if(user == null){
         	//绝对路径
         	response.sendRedirect(request.getContextPath()+"/admin/login.htm");
@@ -68,7 +67,6 @@ public class CommonInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		long beginTime = System.currentTimeMillis();
-	
 		/*通过IP解析地理位置*/
 		String ip = AddressUtils.getIp(request);
 		Visitor visitor = AppData.visitorMap.get(ip);

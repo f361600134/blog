@@ -43,14 +43,12 @@ public class Content {
 	public static final String SEARCH_VISITOR		=	"search";
 	/**end mark**/
 	
-	
 	/**error info**/
 	/*key*/
 	public static final String ERRORMSG			=	"errorMsg";
 	/*value*/
 	public static final String WRONG_LOGIN_MESSAGE	=	"用户名或密码错误";
 	/**end error info**/
-	
 	
 	
 	/**symbol**/

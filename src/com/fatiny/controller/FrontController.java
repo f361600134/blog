@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -100,12 +101,11 @@ public class FrontController {
 	
 	/**
 	 * 有图模式
-	 * @deprecated
 	 * @param request
 	 * @param model
 	 * @return
 	 */
-	//@RequestMapping(value = "/posts_with_media.htm",method = RequestMethod.GET)
+	@RequestMapping(value = "/posts_with_media.htm",method = RequestMethod.GET)
 	//@RequestMapping(value = "/index.htm",method = RequestMethod.GET)
 	public String postsWithImages(HttpServletRequest request,Model model){
 		find(request, model, 0);
@@ -113,7 +113,7 @@ public class FrontController {
 	}
 	
 	/**
-	 * 有图模式
+	 * 主页
 	 * @param request
 	 * @param model
 	 * @return
@@ -121,8 +121,9 @@ public class FrontController {
 	//@RequestMapping(value = "/posts_with_media.htm",method = RequestMethod.GET)
 	@RequestMapping(value = "/index.htm",method = RequestMethod.GET)
 	public String posts(HttpServletRequest request,Model model){
-		find(request, model, 0);
-		return "/front/posts_with_images";
+		return postsWithImages(request, model);
+//		find(request, model, 0);
+//		return "/front/posts_with_images";
 	}
 	
 	/**
@@ -386,8 +387,13 @@ public class FrontController {
 	 * @param r
 	 */
 	@RequestMapping(value = "/single_posts_comments.htm" ,method = RequestMethod.POST)
-	public String single(HttpServletRequest request,Model model,Contact con){
+	public String single(HttpServletRequest request,HttpServletResponse response,Model model, Contact con){
 		log.info("提交联系方式="+con);
+		if (!verifyCaptcha(request, response)) {
+			log.info("验证不正确~~");
+		}else{
+			log.info("~~验证正确~~");
+		}
 		//如果有文章id,则修改.
 		int bid = Integer.parseInt(request.getParameter("bid")); //文章id插入Contact表
 		int cid = Integer.parseInt(request.getParameter("cid")); //回复id插入reply表
@@ -471,58 +477,35 @@ public class FrontController {
 	}
 	
 	/**
-	 * 
-	 * @version V1.0
+	 * 做验证码校验
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value = "/verifyLogin.htm" ,method = RequestMethod.POST)
-	public void verifyLogin(HttpServletRequest request, HttpServletResponse response){
-		try {
-			GeetestLib gtSdk = new GeetestLib(GeetestConfig.getCaptcha_id(), GeetestConfig.getPrivate_key());
-			String challenge = request.getParameter(GeetestLib.fn_geetest_challenge);
-			String validate = request.getParameter(GeetestLib.fn_geetest_validate);
-			String seccode = request.getParameter(GeetestLib.fn_geetest_seccode);
-				
-			//从session中获取gt-server状态
-			int gt_server_status_code = (Integer) request.getSession().getAttribute(gtSdk.gtServerStatusSessionKey);
+	protected boolean verifyCaptcha(HttpServletRequest request, HttpServletResponse response){
+		GeetestLib gtSdk = new GeetestLib(GeetestConfig.getCaptcha_id(), GeetestConfig.getPrivate_key());
+		String challenge = request.getParameter(GeetestLib.fn_geetest_challenge);
+		String validate = request.getParameter(GeetestLib.fn_geetest_validate);
+		String seccode = request.getParameter(GeetestLib.fn_geetest_seccode);
 			
-			//从session中获取userid
-			String userid = (String)request.getSession().getAttribute("userid");
-			
-			int gtResult = 0;
+		//从session中获取gt-server状态
+		int gt_server_status_code = (Integer) request.getSession().getAttribute(gtSdk.gtServerStatusSessionKey);
+		//从session中获取userid
+		String userid = (String)request.getSession().getAttribute("userid");
+		
+		int gtResult = 0;
 
-			if (gt_server_status_code == 1) {
-				//gt-server正常，向gt-server进行二次验证
-					
-				gtResult = gtSdk.enhencedValidateRequest(challenge, validate, seccode, userid);
-				System.out.println(gtResult);
-			} else {
-				// gt-server非正常情况下，进行failback模式验证
-					
-				System.out.println("failback:use your own server captcha validate");
-				gtResult = gtSdk.failbackValidateRequest(challenge, validate, seccode);
-				System.out.println(gtResult);
-			}
-
-			if (gtResult == 1) {
-				// 验证成功
-				PrintWriter out = response.getWriter();
-				out.println("success:" + gtSdk.getVersionInfo());
-			}
-			else {
-				// 验证失败
-				PrintWriter out = response.getWriter();
-				out.println("fail:" + gtSdk.getVersionInfo());
-			}
-			
-		} catch (Exception e) {
-			log.error(e.getMessage());
+		if (gt_server_status_code == 1) {
+			//gt-server正常，向gt-server进行二次验证
+			gtResult = gtSdk.enhencedValidateRequest(challenge, validate, seccode, userid);
+			System.out.println("gt-server正常，向gt-server进行二次验证");
+		} else {
+			// gt-server非正常情况下，进行failback模式验证
+			System.out.println("failback:use your own server captcha validate");
+			gtResult = gtSdk.failbackValidateRequest(challenge, validate, seccode);
 		}
+		return gtResult == 1 ? true : false;
 	}
 	
-	
-
 	@RequestMapping(value = "/contacts.htm" ,method = RequestMethod.POST)
 	public String contact(HttpServletRequest request,Model model,Contact con){
 		log.info("提交联系方式="+con);
@@ -547,6 +530,7 @@ public class FrontController {
 	
 	@RequestMapping(value = "/searchIP.htm" ,method = RequestMethod.POST)
 	public void searchIP(HttpServletRequest request, HttpServletResponse response, Model model){
+		String text = null;
 		String ip = String.valueOf(request.getParameter("ip")); //文章id插入Contact表)
 		if (!StringUtil.isBlank(ip)){
 			Visitor visitor = AppData.visitorMap.get(ip);
@@ -554,22 +538,22 @@ public class FrontController {
 				visitor = AddressUtils.createVisitorByIp(request, ip);
 			}
 			//生成返回内容
-			String text = "<h5>IP: ?<br/></h5>\n<h6>GEO Address: ?\n<br/>Ali Address: ?<br/></h6>"; 
+			text = "<h5>IP: ?<br/></h5>\n<h6>Geo Address: ?\n<br/>Ali Address: ?<br/></h6>"; 
 			text = UtilTools.format(text, ip, visitor.getAddress(), visitor.getDizhi());
 			
-			//通过ajax返回给前端
-			response.setHeader("Cache-Control", "no-cache");
-			response.setContentType("text/html;charset=utf-8");
-			try {
-				PrintWriter out = response.getWriter();
-				text = URLDecoder.decode(text, "utf-8"); //把Ajax的传值，转换成utf-8
-				out.print(text); 
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}else{
-			//TODO
+			text = "<h5>输入地址好像错了,二货~~</h5>";
+		}
+		//通过ajax返回给前端
+		response.setHeader("Cache-Control", "no-cache");
+		response.setContentType("text/html;charset=utf-8");
+		try {
+			PrintWriter out = response.getWriter();
+			text = URLDecoder.decode(text, "utf-8"); //把Ajax的传值，转换成utf-8
+			out.print(text); 
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	

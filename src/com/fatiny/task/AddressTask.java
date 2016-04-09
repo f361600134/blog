@@ -6,6 +6,8 @@ import java.util.Map.Entry;
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
+import org.springframework.stereotype.Component;
+
 import com.fatiny.pojo.Visitor;
 import com.fatiny.service.VisitorService;
 import com.fatiny.util.LogContext;
@@ -17,6 +19,7 @@ import com.fatiny.vo.AppData;
  * @date 2015年12月3日 下午11:05:54 
  * @version V1.0
  */
+@Component
 public class AddressTask {
 	private static Logger log = LogContext.LOG_MODULE_INTERCEPTER;
 	
@@ -24,7 +27,6 @@ public class AddressTask {
 	public VisitorService getVisitorService() {
 		return visitorService;
 	}
-	
 	@Resource
 	public void setVisitorService(VisitorService visitorService) {
 		this.visitorService = visitorService;
@@ -35,7 +37,7 @@ public class AddressTask {
 		while(iter.hasNext()){
 			Entry<String, Visitor> entry = iter.next();
 			Visitor visitor = entry.getValue();
-			log.info("visitor:" + visitor);
+			//log.info("visitor:" + visitor);
 			visitorService.saveOrUpdate(visitor);
 			iter.remove();
 		}
