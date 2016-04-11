@@ -174,7 +174,7 @@ String myPath = request.getScheme()+"://"+request.getServerName()+":"+request.ge
 						</fieldset>
 						
 						<%--Start  Code--%>
-						<p><div id="captcha"></div></p>
+<!-- 						<p><div id="captcha"></div></p> -->
 						<%--End  Code--%>
 						
 						<button class="button-style-2 medium" onclick="onSubmit()" type="button">Submit Comment</button>

@@ -38,8 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 -->
 	<script type="text/javascript" src="<%=path %>/js/blog/jquery.min.js"></script>
 	<script>!window.jQuery && document.write('<script src="<%=path %>/js/jquery-1.7.1.min.js"><\/script>')</script>
-	<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<!-- 	<script src="http://static.geetest.com/static/tools/gt.js"></script> -->
 	<script  type="text/javascript" src="<%=path %>/js/blog/share.js"></script>
+<%-- 	<script  type="text/javascript" src="<%=path %>/js/blog/gt.js"></script> --%>
 </head>
 <body class="liquid light">
 
